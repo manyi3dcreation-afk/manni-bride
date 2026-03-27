@@ -19,18 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelector('.nav-links');
   if (hamburgerBtn) {
     hamburgerBtn.addEventListener('click', () => {
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.position = 'absolute';
-      navLinks.style.top = '70px';
-      navLinks.style.left = '0';
-      navLinks.style.right = '0';
-      navLinks.style.background = 'rgba(253,248,245,0.97)';
-      navLinks.style.backdropFilter = 'blur(20px)';
-      navLinks.style.padding = '20px';
-      navLinks.style.gap = '16px';
-      navLinks.style.boxShadow = '0 10px 30px rgba(61,26,46,0.1)';
-      navLinks.style.zIndex = '999';
+      navLinks.classList.toggle('mobile-open');
     });
   }
 
