@@ -153,11 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('paymentOverlay');
   const closeBtn = document.getElementById('modalClose');
 
-  // Lemonsqueezy payment links (REPLACE with real ones after creating products)
+  // Lemonsqueezy payment links — LIVE ✅
   const paymentLinks = {
-    starter: 'https://maneebrides.lemonsqueezy.com/buy/starter', // 替换为真实链接
-    growth: 'https://maneebrides.lemonsqueezy.com/buy/growth',
-    premium: 'https://maneebrides.lemonsqueezy.com/buy/premium'
+    starter: 'https://maneebrides.lemonsqueezy.com/checkout/buy/71c6d9cf-bd3d-4f58-a979-3f54658a9e2e',
+    growth:  'https://maneebrides.lemonsqueezy.com/checkout/buy/92ddc26f-a475-4387-b8a7-e874eefc5ee0',
+    premium: 'https://maneebrides.lemonsqueezy.com/checkout/buy/778a84cb-3b08-44eb-96cb-742a7b3cbd7b',
+    test:    'https://maneebrides.lemonsqueezy.com/checkout/buy/1d1949c1-25b2-4293-bf42-1b13dea888af'
   };
 
   let currentPlan = 'starter';
