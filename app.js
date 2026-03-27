@@ -149,13 +149,79 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ----- Plan buttons -----
-  ['plan-starter-btn', 'plan-growth-btn', 'plan-premium-btn'].forEach(id => {
+  // ----- Payment Modal -----
+  const overlay = document.getElementById('paymentOverlay');
+  const closeBtn = document.getElementById('modalClose');
+
+  // Lemonsqueezy payment links (REPLACE with real ones after creating products)
+  const paymentLinks = {
+    starter: 'https://maneebrides.lemonsqueezy.com/buy/starter', // 替换为真实链接
+    growth: 'https://maneebrides.lemonsqueezy.com/buy/growth',
+    premium: 'https://maneebrides.lemonsqueezy.com/buy/premium'
+  };
+
+  let currentPlan = 'starter';
+
+  const openPaymentModal = (planId) => {
+    if (planId) {
+      currentPlan = planId;
+      document.querySelectorAll('.plan-tab').forEach(t => t.classList.remove('active'));
+      const tab = document.querySelector(`.plan-tab[data-plan="${planId}"]`);
+      if (tab) tab.classList.add('active');
+    }
+    updatePaymentLink();
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closePaymentModal = () => {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  const updatePaymentLink = () => {
+    const cardBtn = document.getElementById('payBtn-card');
+    if (cardBtn) cardBtn.href = paymentLinks[currentPlan] || '#';
+  };
+
+  // Close modal
+  if (closeBtn) closeBtn.addEventListener('click', closePaymentModal);
+  if (overlay) overlay.addEventListener('click', (e) => { if (e.target === overlay) closePaymentModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePaymentModal(); });
+
+  // Plan tab switching
+  document.querySelectorAll('.plan-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.plan-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentPlan = tab.dataset.plan;
+      updatePaymentLink();
+    });
+  });
+
+  // Subscribe buttons → open payment modal
+  const planBtnMap = {
+    'plan-starter-btn': 'starter',
+    'plan-growth-btn': 'growth',
+    'plan-premium-btn': 'premium'
+  };
+  Object.entries(planBtnMap).forEach(([id, plan]) => {
     const btn = document.getElementById(id);
     if (btn) {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        showToast('💄 感谢您的关注！顾问将在24小时内与您联系');
+        openPaymentModal(plan);
+      });
+    }
+  });
+
+  // Nav CTA and Hero buttons also open modal
+  ['nav-cta-btn', 'hero-start-btn'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openPaymentModal('growth');
       });
     }
   });
@@ -216,6 +282,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rect.top < window.innerHeight) startCounters();
   }
 
-  console.log('%c曼妮新娘 MANNY BRIDE', 'font-size:24px;font-weight:bold;color:#c9896a;');
+  console.log('%c曼妮新娘 MANEE BRIDES', 'font-size:24px;font-weight:bold;color:#c9896a;');
   console.log('%c为高价值女性打造百万网红超级个人IP', 'font-size:14px;color:#6b4c5e;');
 });
+
+// ----- Global functions for payment modal -----
+function toggleQRCode() {
+  const section = document.getElementById('qrSection');
+  const arrow = document.getElementById('cnArrow');
+  section.classList.toggle('open');
+  arrow.classList.toggle('open');
+  arrow.textContent = section.classList.contains('open') ? '↑' : '↓';
+}
+
+function toggleCrypto() {
+  const section = document.getElementById('cryptoSection');
+  const arrow = document.getElementById('cryptoArrow');
+  section.classList.toggle('open');
+  arrow.classList.toggle('open');
+  arrow.textContent = section.classList.contains('open') ? '↑' : '↓';
+}
+
+function copyAddress(elementId) {
+  const el = document.getElementById(elementId);
+  const code = el.querySelector('code');
+  const btn = el.querySelector('.copy-btn');
+  if (code) {
+    navigator.clipboard.writeText(code.textContent).then(() => {
+      btn.textContent = '已复制 ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '复制';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+}

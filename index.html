@@ -508,6 +508,129 @@
     </div>
   </footer>
 
+  <!-- Payment Modal -->
+  <div class="payment-overlay" id="paymentOverlay">
+    <div class="payment-modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      
+      <div class="modal-header">
+        <h3 class="modal-title">选择您的订阅套餐</h3>
+        <p class="modal-subtitle">安全支付 · 随时取消 · 全球通用</p>
+      </div>
+
+      <!-- Plan Tabs -->
+      <div class="plan-tabs">
+        <button class="plan-tab active" data-plan="starter" data-price="298">
+          <span class="tab-name">起航版</span>
+          <span class="tab-price">¥298/月</span>
+        </button>
+        <button class="plan-tab" data-plan="growth" data-price="698">
+          <span class="tab-name">腾飞版</span>
+          <span class="tab-price">¥698/月</span>
+          <span class="tab-badge">热门</span>
+        </button>
+        <button class="plan-tab" data-plan="premium" data-price="1980">
+          <span class="tab-name">百万IP版</span>
+          <span class="tab-price">¥1,980/月</span>
+        </button>
+      </div>
+
+      <!-- Payment Methods -->
+      <div class="payment-methods">
+        <h4 class="method-heading">选择支付方式</h4>
+
+        <!-- Method 1: International Card (Lemonsqueezy) -->
+        <a class="payment-method-btn" id="payBtn-card" href="#" target="_blank" rel="noopener">
+          <div class="method-icon-group">
+            <span class="method-icon">💳</span>
+            <div class="method-info">
+              <strong>信用卡 / Apple Pay / Google Pay</strong>
+              <span>Visa, Mastercard, AMEX — 全球通用</span>
+            </div>
+          </div>
+          <span class="method-arrow">→</span>
+        </a>
+
+        <!-- Method 2: WeChat / Alipay -->
+        <button class="payment-method-btn" id="payBtn-cn" onclick="toggleQRCode()">
+          <div class="method-icon-group">
+            <span class="method-icon">📱</span>
+            <div class="method-info">
+              <strong>支付宝 / 微信支付</strong>
+              <span>扫码付款 · 即时到账</span>
+            </div>
+          </div>
+          <span class="method-arrow" id="cnArrow">↓</span>
+        </button>
+        <div class="qr-section" id="qrSection">
+          <div class="qr-notice">
+            <div class="qr-notice-icon">📋</div>
+            <p>请扫描下方二维码完成支付<br />付款后添加微信 <strong>mannibride888</strong> 发送截图激活服务</p>
+          </div>
+          <div class="qr-placeholder">
+            <div class="qr-box">
+              <div class="qr-icon">📱</div>
+              <p>支付宝收款码</p>
+              <span class="qr-coming">即将上线</span>
+            </div>
+            <div class="qr-box">
+              <div class="qr-icon">💬</div>
+              <p>微信收款码</p>
+              <span class="qr-coming">即将上线</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Method 3: Crypto -->
+        <button class="payment-method-btn" id="payBtn-crypto" onclick="toggleCrypto()">
+          <div class="method-icon-group">
+            <span class="method-icon">₿</span>
+            <div class="method-info">
+              <strong>USDT / 加密货币</strong>
+              <span>TRC-20 · ERC-20 · 低手续费</span>
+            </div>
+          </div>
+          <span class="method-arrow" id="cryptoArrow">↓</span>
+        </button>
+        <div class="crypto-section" id="cryptoSection">
+          <div class="crypto-notice">
+            <p>转账后请将 TXID 发送至 <strong>hello@maneebrides.shop</strong> 以激活服务</p>
+          </div>
+          <div class="crypto-options">
+            <div class="crypto-chain">
+              <div class="chain-header">
+                <span class="chain-badge trc">TRC-20</span>
+                <span class="chain-label">USDT (推荐·低Gas)</span>
+              </div>
+              <div class="wallet-address" id="walletTRC">
+                <code>待配置钱包地址</code>
+                <button class="copy-btn" onclick="copyAddress('walletTRC')">复制</button>
+              </div>
+            </div>
+            <div class="crypto-chain">
+              <div class="chain-header">
+                <span class="chain-badge erc">ERC-20</span>
+                <span class="chain-label">USDT / ETH</span>
+              </div>
+              <div class="wallet-address" id="walletERC">
+                <code>待配置钱包地址</code>
+                <button class="copy-btn" onclick="copyAddress('walletERC')">复制</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="trust-badges">
+          <span>🔒 SSL加密</span>
+          <span>🛡️ 安全支付</span>
+          <span>↩️ 7天退款保障</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>
