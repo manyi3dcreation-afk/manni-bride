@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <!-- Favicon: 用生成的SVG渐变图标 -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%23c9896a'/><stop offset='100%25' style='stop-color:%23ff6b9d'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='%230a0a0f'/><text y='.9em' font-size='70' x='12' fill='url(%23g)'>曼</text></svg>" type="image/svg+xml" />
 </head>
 <body>
 
@@ -551,17 +553,6 @@
           <span class="method-arrow">→</span>
         </a>
 
-        <!-- Test Payment -->
-        <a class="payment-method-btn test-payment-btn" href="https://maneebrides.lemonsqueezy.com/checkout/buy/1d1949c1-25b2-4293-bf42-1b13dea888af" target="_blank" rel="noopener" id="payBtn-test">
-          <div class="method-icon-group">
-            <span class="method-icon">🧪</span>
-            <div class="method-info">
-              <strong>$1 测试支付</strong>
-              <span>验证收款流程是否正常</span>
-            </div>
-          </div>
-          <span class="method-arrow">→</span>
-        </a>
 
         <!-- Method 2: WeChat / Alipay -->
         <button class="payment-method-btn" id="payBtn-cn" onclick="toggleQRCode()">
@@ -569,27 +560,51 @@
             <span class="method-icon">📱</span>
             <div class="method-info">
               <strong>支付宝 / 微信支付</strong>
-              <span>扫码付款 · 即时到账</span>
+              <span>扫码付款 · 即时到账 · 国内首选</span>
             </div>
           </div>
           <span class="method-arrow" id="cnArrow">↓</span>
         </button>
         <div class="qr-section" id="qrSection">
-          <div class="qr-notice">
-            <div class="qr-notice-icon">📋</div>
-            <p>请扫描下方二维码完成支付<br />付款后添加微信 <strong>mannibride888</strong> 发送截图激活服务</p>
+          <div class="qr-plan-info">
+            <span>当前套餐：</span>
+            <span class="qr-plan-name" id="qrPlanName">起航版</span>
+            <span class="qr-plan-price" id="qrPlanPrice">¥298 / 月</span>
           </div>
-          <div class="qr-placeholder">
-            <div class="qr-box">
-              <div class="qr-icon">📱</div>
-              <p>支付宝收款码</p>
-              <span class="qr-coming">即将上线</span>
+          <div class="qr-steps">
+            <div class="qr-step"><span class="step-num">1</span><span>扫描下方收款码</span></div>
+            <div class="qr-step"><span class="step-num">2</span><span>备注您的手机号</span></div>
+            <div class="qr-step"><span class="step-num">3</span><span>添加微信 <strong>mannibride888</strong> 发截图激活</span></div>
+          </div>
+          <div class="qr-codes-row">
+            <div class="qr-code-block">
+              <div class="qr-label alipay-label">🔵 支付宝</div>
+              <div class="qr-img-wrapper">
+                <img src="img/qr-alipay.png" alt="支付宝收款码" class="qr-img"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="qr-placeholder-box">
+                  <span style="font-size:2rem">📱</span>
+                  <p>收款码配置中</p>
+                  <small>请联系微信 mannibride888</small>
+                </div>
+              </div>
             </div>
-            <div class="qr-box">
-              <div class="qr-icon">💬</div>
-              <p>微信收款码</p>
-              <span class="qr-coming">即将上线</span>
+            <div class="qr-divider-v"></div>
+            <div class="qr-code-block">
+              <div class="qr-label wechat-label">🟢 微信支付</div>
+              <div class="qr-img-wrapper">
+                <img src="img/qr-wechat.png" alt="微信收款码" class="qr-img"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="qr-placeholder-box">
+                  <span style="font-size:2rem">💬</span>
+                  <p>收款码配置中</p>
+                  <small>请联系微信 mannibride888</small>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="qr-contact-hint">
+            💬 付款后添加微信 <strong>mannibride888</strong> 并发送付款截图，24小时内为您激活服务
           </div>
         </div>
 
@@ -638,9 +653,18 @@
           <span>🔒 SSL加密</span>
           <span>🛡️ 安全支付</span>
           <span>↩️ 7天退款保障</span>
+          <span>⚡ 24小时激活</span>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Floating WeChat CTA -->
+  <div class="wechat-float" id="wechatFloat">
+    <a href="javascript:void(0)" onclick="document.getElementById('paymentOverlay').classList.add('active');document.body.style.overflow='hidden'" class="wechat-float-btn" title="立即咨询">
+      <span class="wechat-float-icon">💬</span>
+      <span class="wechat-float-label">立即订阅</span>
+    </a>
   </div>
 
   <script src="app.js"></script>

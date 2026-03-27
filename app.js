@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ----- Intersection Observer for all animations -----
-  const observerOptions = { threshold: 0.15 };
+  const observerOptions = { threshold: 0.05, rootMargin: '0px 0px -40px 0px' };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -101,8 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }, observerOptions);
 
   // Observe fade-up elements
-  document.querySelectorAll('.about-card, .case-card, .plan-card').forEach(el => {
+  document.querySelectorAll('.about-card, .case-card, .plan-card').forEach((el, i) => {
     el.classList.add('fade-up');
+    el.style.transitionDelay = `${i * 0.08}s`;
     observer.observe(el);
   });
 
@@ -111,6 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.transitionDelay = `${i * 0.15}s`;
     observer.observe(el);
   });
+
+  // Safety: force-show all animated elements after 1.5s (in case observer misses them)
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up:not(.visible), .timeline-item:not(.visible)').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 1500);
 
   // Trigger hero stats counter on load
   const heroSection = document.getElementById('hero');
@@ -267,7 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3500);
   };
 
-  // ----- Parallax on scroll -----
+  // ----- Parallax on scroll + floating button -----
+  const floatBtn = document.getElementById('wechatFloat');
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     const orbs = document.querySelectorAll('.hero-orb');
@@ -275,7 +284,23 @@ document.addEventListener('DOMContentLoaded', () => {
       const speed = 0.1 + i * 0.05;
       orb.style.transform = `translateY(${scrollY * speed}px)`;
     });
+    // Show floating button after scrolling past hero
+    if (floatBtn) {
+      const isModalOpen = overlay && overlay.classList.contains('active');
+      if (scrollY > 300 && !isModalOpen) {
+        floatBtn.classList.add('show');
+      } else {
+        floatBtn.classList.remove('show');
+      }
+    }
   }, { passive: true });
+
+  // Hide float btn when modal opens
+  if (overlay && floatBtn) {
+    overlay.addEventListener('click', () => {
+      if (!overlay.classList.contains('active')) floatBtn.classList.add('show');
+    });
+  }
 
   // ----- Initialize: start counter immediately if hero visible -----
   if (heroSection) {
