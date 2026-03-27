@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>曼妮新娘 | 打造百万网红超级个人IP</title>
+  <meta name="description" content="曼妮新娘MCN机构——为高价值女性打造7×24不间断的百万网红超级个人IP，颠覆美妆行业，重建美的秩序。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-cn">曼妮新娘</span>
+        <span class="logo-en">MANNY BRIDE</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about" id="nav-about">关于我们</a></li>
+        <li><a href="#services" id="nav-services">服务体系</a></li>
+        <li><a href="#cases" id="nav-cases">成功案例</a></li>
+        <li><a href="#plans" id="nav-plans">订阅套餐</a></li>
+        <li><a href="#app" id="nav-app">下载App</a></li>
+      </ul>
+      <a href="#plans" class="nav-cta" id="nav-cta-btn">立即订阅</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="hero-particles" id="particles"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>7×24 不间断超级IP孵化机构</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line-1">为您打造</span>
+        <span class="title-line-2 gradient-text">百万网红</span>
+        <span class="title-line-3">超级个人IP</span>
+      </h1>
+      <p class="hero-desc">
+        数百位高价值女性已通过曼妮新娘<br />
+        达到百万级别的美·赋予你更多的美的价值
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num" data-target="500">0</span><span class="stat-unit">+</span>
+          <span class="stat-label">成功孵化IP</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="100">0</span><span class="stat-unit">万+</span>
+          <span class="stat-label">平均粉丝量级</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="98">0</span><span class="stat-unit">%</span>
+          <span class="stat-label">客户满意度</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#plans" class="btn-primary" id="hero-start-btn">开启我的IP之旅</a>
+        <a href="#about" class="btn-secondary" id="hero-learn-btn">了解更多</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card floating">
+        <div class="card-glow"></div>
+        <div class="profile-ring">
+          <img src="img/hero.png" alt="曼妮新娘" class="profile-img" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'profile-placeholder\'><span>曼</span></div>'" />
+        </div>
+        <div class="card-info">
+          <div class="card-name">@曼妮新娘</div>
+          <div class="card-tag">✨ 超级IP</div>
+          <div class="card-followers">
+            <span class="follower-num">156</span><span class="follower-unit">万粉丝</span>
+          </div>
+        </div>
+        <div class="card-platforms">
+          <span class="platform-tag xhs">小红书</span>
+          <span class="platform-tag dy">抖音</span>
+          <span class="platform-tag wb">微博</span>
+        </div>
+      </div>
+      <div class="floating-badge badge-top-left">
+        <div class="badge-icon">🌟</div>
+        <div class="badge-text">
+          <strong>今日新增</strong>
+          <span>+2,847 粉丝</span>
+        </div>
+      </div>
+      <div class="floating-badge badge-bottom-right">
+        <div class="badge-icon">💎</div>
+        <div class="badge-text">
+          <strong>品牌合作</strong>
+          <span>已接洽 38 个品牌</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator" id="scrollIndicator">
+      <div class="scroll-mouse"></div>
+      <span>向下探索</span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">关于曼妮新娘</div>
+        <h2 class="section-title">颠覆美妆行业<br /><span class="gradient-text">重建美的秩序</span></h2>
+        <p class="section-desc">我们是一家专注于高价值女性IP孵化的MCN机构，通过专业的内容策略、数据驱动的运营体系，帮助每一位女性在美妆赛道实现百万级别的影响力。</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card" id="about-card-1">
+          <div class="about-icon">🔥</div>
+          <h3>7×24 全天候运营</h3>
+          <p>智能化内容矩阵与人工精细化运营相结合，让您的IP在任意时段持续输出高质量内容，实现粉丝的持续增长。</p>
+        </div>
+        <div class="about-card" id="about-card-2">
+          <div class="about-icon">💄</div>
+          <h3>美妆行业深度资源</h3>
+          <p>与数百个顶级美妆品牌建立战略合作，为您的IP提供源源不断的内容素材、产品资源和商业变现机会。</p>
+        </div>
+        <div class="about-card" id="about-card-3">
+          <div class="about-icon">📊</div>
+          <h3>数据驱动精准增长</h3>
+          <p>基于大数据分析的内容策略，精准触达目标受众，让每一条内容都能产生最大化的传播价值和商业回报。</p>
+        </div>
+        <div class="about-card" id="about-card-4">
+          <div class="about-icon">👑</div>
+          <h3>高价值女性专属</h3>
+          <p>专为有品位、有追求的高价值女性设计，不仅是粉丝增长，更是个人品牌价值的全面升华与商业变现。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services section dark-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag light">我们的服务</div>
+        <h2 class="section-title light">一站式IP孵化<br /><span class="gradient-text-light">从0到100万粉丝</span></h2>
+      </div>
+      <div class="services-timeline">
+        <div class="timeline-item" id="timeline-1">
+          <div class="timeline-step">01</div>
+          <div class="timeline-content">
+            <h3>IP定位与人设打造</h3>
+            <p>深度挖掘您的个人特质与专业优势，量身定制差异化的IP人设，在竞争激烈的美妆赛道找到专属的细分市场。</p>
+            <div class="timeline-tags">
+              <span>人设策划</span><span>差异定位</span><span>竞品分析</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" id="timeline-2">
+          <div class="timeline-step">02</div>
+          <div class="timeline-content">
+            <h3>内容矩阵搭建</h3>
+            <p>专业内容团队为您规划小红书、抖音、微博等多平台内容矩阵，打造统一的品牌形象与持续输出的内容体系。</p>
+            <div class="timeline-tags">
+              <span>小红书</span><span>抖音</span><span>内容规划</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" id="timeline-3">
+          <div class="timeline-step">03</div>
+          <div class="timeline-content">
+            <h3>流量爆发与粉丝增长</h3>
+            <p>利用平台算法红利、热点借势和精准投放，快速触达目标用户群体，实现粉丝量的爆发式增长。</p>
+            <div class="timeline-tags">
+              <span>算法优化</span><span>热点借势</span><span>精准投放</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" id="timeline-4">
+          <div class="timeline-step">04</div>
+          <div class="timeline-content">
+            <h3>商业变现与品牌合作</h3>
+            <p>凭借强大的品牌资源库和商务谈判团队，为您匹配最优质的商业合作机会，实现IP价值的最大化变现。</p>
+            <div class="timeline-tags">
+              <span>品牌合作</span><span>带货变现</span><span>商务对接</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases Section -->
+  <section class="cases section" id="cases">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">成功案例</div>
+        <h2 class="section-title">她们都做到了<br /><span class="gradient-text">百万粉丝不是梦</span></h2>
+      </div>
+      <div class="cases-grid">
+        <div class="case-card" id="case-1">
+          <div class="case-before-after">
+            <div class="case-metric">
+              <span class="metric-before">1,200</span>
+              <span class="metric-arrow">→</span>
+              <span class="metric-after">128万</span>
+            </div>
+            <span class="metric-label">粉丝增长</span>
+          </div>
+          <div class="case-avatar">
+            <div class="avatar-placeholder">小</div>
+          </div>
+          <div class="case-info">
+            <div class="case-name">@小希美妆日记</div>
+            <div class="case-niche">新娘妆·日系妆容</div>
+            <div class="case-duration">⏱ 6个月完成百万目标</div>
+          </div>
+          <div class="case-quote">"曼妮新娘帮我找到了真正属于自己的风格，现在每条视频都有几十万播放"</div>
+        </div>
+        <div class="case-card featured" id="case-2">
+          <div class="featured-badge">🏆 明星案例</div>
+          <div class="case-before-after">
+            <div class="case-metric">
+              <span class="metric-before">800</span>
+              <span class="metric-arrow">→</span>
+              <span class="metric-after">256万</span>
+            </div>
+            <span class="metric-label">粉丝增长</span>
+          </div>
+          <div class="case-avatar">
+            <div class="avatar-placeholder gold">琳</div>
+          </div>
+          <div class="case-info">
+            <div class="case-name">@琳儿的变美日常</div>
+            <div class="case-niche">轻奢美妆·高定婚纱</div>
+            <div class="case-duration">⏱ 4个月突破百万</div>
+          </div>
+          <div class="case-quote">"从来没想过我也能成为百万博主，曼妮给了我最专业的支持和最美的舞台"</div>
+        </div>
+        <div class="case-card" id="case-3">
+          <div class="case-before-after">
+            <div class="case-metric">
+              <span class="metric-before">5,000</span>
+              <span class="metric-arrow">→</span>
+              <span class="metric-after">89万</span>
+            </div>
+            <span class="metric-label">粉丝增长</span>
+          </div>
+          <div class="case-avatar">
+            <div class="avatar-placeholder">雅</div>
+          </div>
+          <div class="case-info">
+            <div class="case-name">@雅雅新娘驾到</div>
+            <div class="case-niche">复古婚礼·传统汉服</div>
+            <div class="case-duration">⏱ 8个月稳定增长</div>
+          </div>
+          <div class="case-quote">"专业的数据分析让我的内容方向越来越准确，商业合作也越来越多"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Plans -->
+  <section class="plans section dark-section" id="plans">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag light">订阅套餐</div>
+        <h2 class="section-title light">选择适合您的<br /><span class="gradient-text-light">成长之路</span></h2>
+        <p class="section-desc light">订阅制服务，灵活按需选择，专业团队全程护航</p>
+      </div>
+      <div class="plans-grid">
+        <div class="plan-card" id="plan-starter">
+          <div class="plan-name">起航版</div>
+          <div class="plan-price">
+            <span class="price-currency">¥</span>
+            <span class="price-num">2,980</span>
+            <span class="price-period">/月</span>
+          </div>
+          <div class="plan-subtitle">适合刚起步的新人博主</div>
+          <ul class="plan-features">
+            <li>✓ IP定位诊断报告</li>
+            <li>✓ 每月30条内容规划</li>
+            <li>✓ 小红书专项运营</li>
+            <li>✓ 每周数据复盘</li>
+            <li>✓ 专属内容顾问</li>
+            <li class="dim">✗ 多平台矩阵运营</li>
+            <li class="dim">✗ 品牌商务对接</li>
+          </ul>
+          <a href="#app" class="plan-btn" id="plan-starter-btn">立即订阅</a>
+        </div>
+        <div class="plan-card featured-plan" id="plan-growth">
+          <div class="plan-badge">最受欢迎</div>
+          <div class="plan-name">腾飞版</div>
+          <div class="plan-price">
+            <span class="price-currency">¥</span>
+            <span class="price-num">6,980</span>
+            <span class="price-period">/月</span>
+          </div>
+          <div class="plan-subtitle">快速突破10万粉丝</div>
+          <ul class="plan-features">
+            <li>✓ 深度IP人设重塑</li>
+            <li>✓ 每月60条内容规划</li>
+            <li>✓ 三平台矩阵运营</li>
+            <li>✓ 每日数据监控</li>
+            <li>✓ 专属运营经理</li>
+            <li>✓ 初级品牌商务对接</li>
+            <li class="dim">✗ 定制化爆款策划</li>
+          </ul>
+          <a href="#app" class="plan-btn featured-btn" id="plan-growth-btn">立即订阅</a>
+        </div>
+        <div class="plan-card premium-plan" id="plan-premium">
+          <div class="plan-badge premium-badge">💎 顶级服务</div>
+          <div class="plan-name">百万IP版</div>
+          <div class="plan-price">
+            <span class="price-currency">¥</span>
+            <span class="price-num">19,800</span>
+            <span class="price-period">/月</span>
+          </div>
+          <div class="plan-subtitle">冲击百万粉丝目标</div>
+          <ul class="plan-features">
+            <li>✓ 全维度IP战略规划</li>
+            <li>✓ 无限量内容产出</li>
+            <li>✓ 五大平台全矩阵</li>
+            <li>✓ 7×24 专属团队</li>
+            <li>✓ 高端品牌独家合作</li>
+            <li>✓ 定制化爆款策划</li>
+            <li>✓ 线下资源对接</li>
+          </ul>
+          <a href="#app" class="plan-btn premium-btn" id="plan-premium-btn">立即订阅</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Download Section -->
+  <section class="app-section section" id="app">
+    <div class="container">
+      <div class="app-content">
+        <div class="app-text">
+          <div class="section-tag">专属App</div>
+          <h2 class="section-title">曼妮新娘App<br /><span class="gradient-text">随时管理您的IP</span></h2>
+          <p class="section-desc">通过曼妮新娘专属App，实时查看账号数据、与运营团队沟通、审核内容发布计划，让您的IP成长尽在掌握。</p>
+          <div class="app-features">
+            <div class="app-feature-item">
+              <span class="feature-icon">📈</span>
+              <div>
+                <strong>实时数据看板</strong>
+                <p>粉丝增长、内容表现、商业收益一屏掌握</p>
+              </div>
+            </div>
+            <div class="app-feature-item">
+              <span class="feature-icon">💬</span>
+              <div>
+                <strong>专属客服沟通</strong>
+                <p>与您的专属运营团队随时保持沟通</p>
+              </div>
+            </div>
+            <div class="app-feature-item">
+              <span class="feature-icon">🎯</span>
+              <div>
+                <strong>内容审核发布</strong>
+                <p>一键审核内容，掌控每一条发布计划</p>
+              </div>
+            </div>
+          </div>
+          <div class="app-download-btns">
+            <button class="download-btn ios" id="ios-download-btn">
+              <span class="download-icon">🍎</span>
+              <div>
+                <span class="download-sub">即将上线</span>
+                <span class="download-main">App Store</span>
+              </div>
+            </button>
+            <button class="download-btn android" id="android-download-btn">
+              <span class="download-icon">▶</span>
+              <div>
+                <span class="download-sub">即将上线</span>
+                <span class="download-main">Google Play</span>
+              </div>
+            </button>
+          </div>
+          <div class="xhs-link">
+            <span>📕 关注小红书：</span>
+            <a href="#" class="xhs-handle" id="xhs-link">@曼妮新娘</a>
+            <span>获取最新动态</span>
+          </div>
+        </div>
+        <div class="app-mockup">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="app-ui">
+                <div class="app-header-ui">
+                  <span class="app-logo-ui">曼妮新娘</span>
+                  <span class="app-notif">🔔</span>
+                </div>
+                <div class="app-stats-ui">
+                  <div class="app-stat-box">
+                    <span class="app-stat-num">128万</span>
+                    <span class="app-stat-label">总粉丝</span>
+                  </div>
+                  <div class="app-stat-box">
+                    <span class="app-stat-num">+2,847</span>
+                    <span class="app-stat-label">今日新增</span>
+                  </div>
+                </div>
+                <div class="app-chart">
+                  <div class="chart-bars">
+                    <div class="bar" style="height:40%"></div>
+                    <div class="bar" style="height:55%"></div>
+                    <div class="bar" style="height:45%"></div>
+                    <div class="bar" style="height:70%"></div>
+                    <div class="bar" style="height:60%"></div>
+                    <div class="bar" style="height:85%"></div>
+                    <div class="bar active" style="height:100%"></div>
+                  </div>
+                  <span class="chart-label">近7天粉丝增长</span>
+                </div>
+                <div class="app-content-list">
+                  <div class="content-item-ui">
+                    <div class="content-thumb"></div>
+                    <div class="content-info-ui">
+                      <span class="content-title-ui">今日妆容分享</span>
+                      <span class="content-stats-ui">👁 12.4万 ❤️ 8,200</span>
+                    </div>
+                    <span class="content-status published">已发布</span>
+                  </div>
+                  <div class="content-item-ui">
+                    <div class="content-thumb thumb-2"></div>
+                    <div class="content-info-ui">
+                      <span class="content-title-ui">婚礼现场Vlog</span>
+                      <span class="content-stats-ui">待发布 明日10:00</span>
+                    </div>
+                    <span class="content-status pending">待审核</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="phone-home-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-cn">曼妮新娘</span>
+            <span class="logo-en">MANNY BRIDE</span>
+          </div>
+          <p>为高价值女性打造<br />7×24 不间断百万网红超级个人IP</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" id="footer-xhs">📕 小红书</a>
+            <a href="#" class="social-btn" id="footer-dy">🎵 抖音</a>
+            <a href="#" class="social-btn" id="footer-wb">🌀 微博</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>服务</h4>
+          <ul>
+            <li><a href="#services">IP孵化</a></li>
+            <li><a href="#plans">订阅套餐</a></li>
+            <li><a href="#app">下载App</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>关于</h4>
+          <ul>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#cases">成功案例</a></li>
+            <li><a href="#">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>联系我们</h4>
+          <p>📧 hello@mannibride.com</p>
+          <p>📱 微信：mannibride888</p>
+          <p>📍 深圳市南山区科技园</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 曼妮新娘 MANNY BRIDE. 保留所有权利.</p>
+        <p class="footer-slogan">颠覆美妆行业 · 重建美的秩序</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
