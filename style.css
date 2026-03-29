@@ -235,7 +235,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .trust-divider { color: var(--text-3); }
 
 /* Hero visual */
-.hero-visual { flex: 0 0 460px; display: flex; justify-content: center; }
+.hero-visual { flex: 0 0 460px; display: flex; justify-content: center; align-items: flex-start; }
 .ip-stage { position: relative; width: 340px; }
 .ip-carousel { position: relative; height: 480px; }
 .ip-card {
@@ -966,7 +966,7 @@ select.modal-input option { background: #13132a; color: var(--text); }
   .hero-dual-cta { max-width: 500px; margin: 0 auto 40px; }
   .hero-trust { justify-content: center; }
   .float-badge { display: none; }
-  .ip-stage { width: 320px; margin: 0 auto; }
+  .ip-stage { max-width: 360px; width: 100%; margin: 0 auto; }
   .tracks-grid { grid-template-columns: repeat(2,1fr); }
   .ips-grid { grid-template-columns: 1fr 1fr; }
   .partner-layout { grid-template-columns: 1fr; }
@@ -1012,66 +1012,68 @@ select.modal-input option { background: #13132a; color: var(--text); }
   .hero { padding-top: 70px; min-height: auto; }
   .hero-inner {
     flex-direction: column;
-    padding: 36px 0 0;
-    gap: 28px;
+    padding: 28px 16px 0;
+    gap: 20px;
     text-align: center;
+    width: 100%;
+    box-sizing: border-box;
   }
-  .hero-eyebrow { font-size: .7rem; margin-bottom: 12px; }
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 14px;
-  }
-  .hero-subtitle { font-size: .875rem; margin-bottom: 24px; }
-  .hero-dual-cta {
-    flex-direction: column;
-    gap: 12px;
-    max-width: 100%;
-    margin: 0 0 28px;
-  }
-  .cta-card {
-    padding: 14px 18px;
-    border-radius: 14px;
-    text-align: left;
-  }
-  .cta-title { font-size: 1rem; }
-  .cta-sub { font-size: .75rem; }
-  .hero-trust {
-    flex-wrap: nowrap;
-    gap: 0;
-    justify-content: space-around;
-    font-size: .72rem;
-  }
-  .trust-div { height: 20px; }
+  .hero-content { width: 100%; }
+  .hero-eyebrow { font-size: .7rem; margin-bottom: 10px; }
+  .hero-title { font-size: 1.9rem; line-height: 1.2; margin-bottom: 12px; }
+  .ht-line2 { font-size: 2.2rem !important; }
+  .hero-desc { font-size: .85rem; line-height: 1.7; margin-bottom: 20px; }
+  .hero-dual-cta { flex-direction: column; gap: 10px; width: 100%; margin: 0 0 20px; }
+  .dual-cta-btn { width: 100%; padding: 14px 16px; gap: 12px; border-radius: 14px; }
+  .dcta-icon { font-size: 1.5rem; }
+  .dcta-text strong { font-size: .9rem; }
+  .dcta-text span { font-size: .75rem; }
+  .hero-trust { justify-content: center; gap: 10px; font-size: .72rem; flex-wrap: nowrap; }
 
-  /* IP 轮播区 */
-  .ip-stage { width: 100%; max-width: 320px; margin: 0 auto; }
-  .ip-card-wrap { border-radius: 16px; }
-  .ip-card-face {
-    height: 260px;
-    font-size: 2.5rem;
-    border-radius: 16px;
+  /* IP 轮播区 ── 核心修复 (iPhone 12 mini = 360px) */
+  .hero-visual {
+    flex: none !important;
+    width: 100% !important;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
   }
-  .ip-card-data { padding: 12px 14px; }
-  .ip-data-stat .num { font-size: 1.2rem; }
-  .ip-data-stat .label { font-size: .6rem; }
-  .ip-dots { bottom: 70px; gap: 5px; }
+  .ip-stage {
+    width: calc(100vw - 32px) !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 auto;
+    position: relative;
+  }
+  .ip-carousel {
+    position: relative;
+    width: 100%;
+    height: calc(100vw - 32px);
+    min-height: 280px;
+    max-height: 380px;
+  }
+  .ip-card { position: absolute; inset: 0; border-radius: 16px !important; overflow: hidden; }
+  .ip-card-img-wrap { width: 100%; height: 100%; }
+  .ip-card-img { width: 100%; height: 100%; object-fit: cover; }
+  .ip-card-placeholder { width: 100%; height: 100%; }
+  .icp-char { font-size: 3.5rem; }
+  .ip-card-overlay { padding: 18px 16px; }
+  .ip-card-name { font-size: 1.3rem; }
+  .ip-card-fans span { font-size: 1.2rem; }
+  .ip-dots { margin-top: 12px; gap: 6px; }
 
   /* How 三步骤 */
   .steps-flow { flex-direction: column; gap: 12px; }
-  .step-card { padding: 24px 20px; }
+  .step-item { padding: 24px 20px; }
   .step-num { font-size: 2rem; }
   .step-title { font-size: 1rem; }
   .step-desc { font-size: .82rem; }
-  .step-tag { font-size: .68rem; }
+  .step-connector { display: none; }
   .btn-primary-lg { padding: 14px 32px; font-size: .95rem; width: 100%; }
 
-  /* 赛道卫窗 */
+  /* 赛道 */
   .tracks-grid { grid-template-columns: 1fr; gap: 12px; }
   .track-card { padding: 22px 18px; }
-  .track-icon { font-size: 2rem; margin-bottom: 10px; }
-  .track-name { font-size: 1.1rem; }
-  .track-desc { font-size: .82rem; }
 
   /* IP 星阵 */
   .ips-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1086,7 +1088,7 @@ select.modal-input option { background: #13132a; color: var(--text); }
   .partner-layout { grid-template-columns: 1fr; gap: 24px; }
   .calc-card { padding: 24px 18px; }
   .calc-sel-group { gap: 6px; }
-  .calc-sel { padding: 8px 8px; font-size: .72rem; }
+  .calc-sel { padding: 8px; font-size: .72rem; }
   .calc-amount { font-size: 2.5rem; }
   .btn-partner { padding: 14px; font-size: .9rem; }
   .benefit-item { padding: 14px 16px; gap: 12px; }
@@ -1101,15 +1103,6 @@ select.modal-input option { background: #13132a; color: var(--text); }
   .p-node { width: 48px; height: 48px; }
   .p-node-icon { font-size: 1rem; }
   .p-node-name { font-size: .42rem; }
-  /* 重新定位 8 个节点到小圆 (r≈120px) */
-  .p-node[style*="--i:0"] { top:calc(50% - 24px); left:calc(50% + 120px - 24px); }
-  .p-node[style*="--i:1"] { top:calc(50% + 85px - 24px); left:calc(50% + 85px - 24px); }
-  .p-node[style*="--i:2"] { top:calc(50% + 120px - 24px); left:calc(50% - 24px); }
-  .p-node[style*="--i:3"] { top:calc(50% + 85px - 24px); left:calc(50% - 85px - 24px); }
-  .p-node[style*="--i:4"] { top:calc(50% - 24px); left:calc(50% - 120px - 24px); }
-  .p-node[style*="--i:5"] { top:calc(50% - 85px - 24px); left:calc(50% - 85px - 24px); }
-  .p-node[style*="--i:6"] { top:calc(50% - 120px - 24px); left:calc(50% - 24px); }
-  .p-node[style*="--i:7"] { top:calc(50% - 85px - 24px); left:calc(50% + 85px - 24px); }
   .matrix-stats { flex-direction: column; }
   .mstat { padding: 16px; }
   .mstat-div { width: 80%; height: 1px; }
@@ -1126,12 +1119,7 @@ select.modal-input option { background: #13132a; color: var(--text); }
   .footer { padding: 48px 0 24px; }
 
   /* 弹窗 */
-  .modal-box {
-    padding: 28px 20px;
-    border-radius: 20px;
-    width: 94%;
-    max-height: 88vh;
-  }
+  .modal-box { padding: 28px 20px; border-radius: 20px; width: 94%; max-height: 88vh; }
   .modal-header h3 { font-size: 1.25rem; }
   .ms-drop { padding: 24px 16px; }
   .modal-tracks { grid-template-columns: 1fr; gap: 8px; }
@@ -1142,23 +1130,29 @@ select.modal-input option { background: #13132a; color: var(--text); }
   .modal-input { padding: 12px 14px; font-size: .875rem; }
   .submit-partner { padding: 13px; font-size: .9rem; }
 
-  /* 浮动按鈕 */
+  /* 浮动按钮 */
   .wechat-float { right: 16px; bottom: 24px; }
   .wechat-float-btn { padding: 10px 16px; font-size: .82rem; }
 
-  /* 汉寻菜单 */
-  .mobile-menu {
-    padding: 16px 0;
-  }
-  .mobile-menu a {
-    padding: 14px 20px;
-    font-size: 1rem;
-  }
+  /* 汉堡菜单 */
+  .mobile-menu { padding: 16px 0; }
+  .mobile-menu a { padding: 14px 20px; font-size: 1rem; }
 }
 
-/* ── SE 小屏 (375px) ── */
+/* ── iPhone SE / 小屏 (375px及以下) ── */
 @media (max-width: 375px) {
   html { font-size: 14px; }
+  .hero-title { font-size: 1.8rem; }
+  .ht-line2 { font-size: 2rem !important; }
+  .section-title { font-size: 1.55rem; }
+  .calc-amount { font-size: 2.2rem; }
+  .calc-card { padding: 20px 14px; }
+  .dual-cta-btn { padding: 12px 14px; }
+  .ip-carousel {
+    height: calc(100vw - 28px);
+    min-height: 260px;
+  }
+}
   .hero-title { font-size: 1.85rem; }
   .section-title { font-size: 1.55rem; }
   .calc-amount { font-size: 2.2rem; }
