@@ -1,11 +1,40 @@
-/* app.js — 曼妮新娘 v3.0 */
+/* app.js — 曼妮新娘 v4.0 Luxury Edition */
 
 /* ══ NAV scroll ══ */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  navbar.style.background = window.scrollY > 60
-    ? 'rgba(6,6,13,0.97)' : 'rgba(6,6,13,0.8)';
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
 });
+
+/* ══ Language Toggle ══ */
+function switchLang(lang) {
+  document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  localStorage.setItem('manee-lang', lang);
+}
+
+/* ══ Theme Switcher ══ */
+function switchTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  document.querySelectorAll('.theme-dot').forEach(dot => {
+    dot.classList.toggle('active', dot.dataset.theme === theme);
+  });
+  localStorage.setItem('manee-theme', theme);
+}
+
+// Restore saved preferences on load
+(function() {
+  const savedLang = localStorage.getItem('manee-lang');
+  if (savedLang) switchLang(savedLang);
+  const savedTheme = localStorage.getItem('manee-theme');
+  if (savedTheme) switchTheme(savedTheme);
+})();
 
 /* ══ Hamburger ══ */
 const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -151,100 +180,48 @@ function selectTrack(card, track) {
   setTimeout(() => openUploadModal(track), 200);
 }
 
-/* ══ UPLOAD MODAL ══ */
-let uploadStep = 1;
-
-function openUploadModal(plan) {
-  uploadStep = 1;
-  renderStep(1);
-  document.getElementById('uploadOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-
-  // Pre-select plan/track radio if provided
-  if (plan && typeof plan === 'string' && !['starter','growth','premium'].includes(plan)) {
-    const radio = document.querySelector(`input[name="mtrack"][value="${plan}"]`);
-    if (radio) radio.checked = true;
+/* ══ INQUIRY MODAL (Auxiliary Form) ══ */
+function openInquiryModal() {
+  const overlay = document.getElementById('inquiryOverlay');
+  if(overlay) {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
 }
 
-function closeUploadModal() {
-  document.getElementById('uploadOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function renderStep(n) {
-  document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
-  const step = document.getElementById('ms-' + n);
-  if (step) step.classList.add('active');
-  document.getElementById('modalPrev').style.display = n === 1 ? 'none' : 'block';
-  document.getElementById('modalNext').textContent = n === 3 ? '提交申请 ✓' : '下一步 →';
-}
-
-function modalStep(dir) {
-  const maxStep = 3;
-  if (dir === 1 && uploadStep === maxStep) {
-    // Submit
-    submitUpload();
-    return;
+function closeInquiryModal() {
+  const overlay = document.getElementById('inquiryOverlay');
+  if(overlay) {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
   }
-  uploadStep = Math.max(1, Math.min(maxStep, uploadStep + dir));
-  renderStep(uploadStep);
 }
 
-function handlePhotos(input) {
-  const previews = document.getElementById('uploadPreviews');
-  previews.innerHTML = '';
-  Array.from(input.files).slice(0, 10).forEach(file => {
-    const url = URL.createObjectURL(file);
-    const img = document.createElement('img');
-    img.src = url;
-    img.className = 'upload-preview-img';
-    previews.appendChild(img);
-  });
-}
+function submitInquiry() {
+  const contact = document.getElementById('iContact')?.value;
 
-// Drag & drop
-const dropZone = document.getElementById('dropZone');
-if (dropZone) {
-  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.borderColor = '#c9896a'; });
-  dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = ''; });
-  dropZone.addEventListener('drop', e => {
-    e.preventDefault();
-    dropZone.style.borderColor = '';
-    const dt = e.dataTransfer;
-    const input = document.getElementById('photoInput');
-    if (dt.files.length && input) {
-      // simulate file input
-      handlePhotos({ files: dt.files });
-    }
-  });
-}
-
-function submitUpload() {
-  const name = document.getElementById('uName')?.value;
-  const phone = document.getElementById('uPhone')?.value;
-  const wechat = document.getElementById('uWechat')?.value;
-
-  if (!phone && !wechat) {
-    alert('请至少填写手机号或微信号，以便我们联系您。');
+  if (!contact || contact.trim() === '') {
+    alert('请务必填写您的微信号或手机号，以便我们能够联系到您。');
     return;
   }
 
-  // Success
-  const modal = document.getElementById('uploadModal');
-  modal.innerHTML = `
-    <div style="text-align:center;padding:40px 20px">
-      <div style="font-size:3.5rem;margin-bottom:20px">🎉</div>
-      <h3 style="font-family:var(--font-serif);font-size:1.5rem;margin-bottom:12px">申请已提交！</h3>
-      <p style="color:var(--text-2);margin-bottom:8px">您的专属IP定制请求已收到</p>
-      <p style="color:var(--text-2);font-size:.85rem">我们的团队将在<strong style="color:var(--gold-2)">24小时内</strong>通过微信与您联系</p>
-      <p style="font-size:.8rem;color:#c9896a;margin-top:20px">微信：mannibride888</p>
-      <button onclick="closeUploadModal()" style="
-        margin-top:28px;padding:12px 36px;
-        background:linear-gradient(135deg,#c9896a,#ff6b9d);
-        color:#fff;border-radius:999px;font-weight:700;font-size:.9rem;
-      ">好的</button>
-    </div>`;
+  // Success State
+  const modal = document.getElementById('inquiryModal');
+  if(modal) {
+    modal.innerHTML = `
+      <div style="text-align:center;padding:40px 20px">
+        <div style="font-size:3.5rem;margin-bottom:20px">✅</div>
+        <h3 style="font-family:var(--font-serif);font-size:1.5rem;margin-bottom:12px">留言已成功提交</h3>
+        <p style="color:var(--text-2);margin-bottom:8px">主理人将在 <strong style="color:var(--primary)">24小时内</strong> 主动添加您！</p>
+        <p style="color:var(--text-3);font-size:.85rem;margin-top:20px">您也可以随时主动添加微信：mannibride888</p>
+        <button onclick="closeInquiryModal()" style="
+          margin-top:28px;padding:12px 36px;
+          background:linear-gradient(135deg,rgba(255,107,157,0.2),rgba(201,137,106,0.2));
+          border:1px solid var(--primary);
+          color:#fff;border-radius:999px;font-weight:400;font-size:.9rem;cursor:pointer;
+        ">明白，关闭</button>
+      </div>`;
+  }
 }
 
 /* ══ PARTNER MODAL ══ */
@@ -282,17 +259,17 @@ function submitPartner() {
 }
 
 /* ══ Close modals on overlay click ══ */
-document.getElementById('uploadOverlay').addEventListener('click', e => {
-  if (e.target === document.getElementById('uploadOverlay')) closeUploadModal();
+document.getElementById('inquiryOverlay')?.addEventListener('click', e => {
+  if (e.target === document.getElementById('inquiryOverlay')) closeInquiryModal();
 });
-document.getElementById('partnerOverlay').addEventListener('click', e => {
+document.getElementById('partnerOverlay')?.addEventListener('click', e => {
   if (e.target === document.getElementById('partnerOverlay')) closePartnerModal();
 });
 
 /* ══ Escape key ══ */
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    closeUploadModal();
+    closeInquiryModal();
     closePartnerModal();
   }
 });

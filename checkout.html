@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>开始行动 | 曼妮新娘</title>
+  <meta name="description" content="选择适合你的启动路径，开始打造你的超级个人IP。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Serif+SC:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%23c9896a'/><stop offset='100%25' style='stop-color:%23ff6b9d'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='%230a0a0f'/><text y='.9em' font-size='70' x='12' fill='url(%23g)'>曼</text></svg>" type="image/svg+xml" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="img/logo.png" alt="曼妮新娘" class="logo-img" />
+        <div class="logo-text"><span class="logo-cn">曼妮新娘</span><span class="logo-en">MANEE BRIDES</span></div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="services.html">服务体系</a></li>
+        <li><a href="faq.html">常见问题</a></li>
+        <li><a href="services.html">订阅套餐</a></li>
+      </ul>
+      <a href="services.html" class="nav-cta">立即订阅</a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="zh" onclick="switchLang('zh')">中</button>
+        <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+      </div>
+      <div class="theme-switcher">
+        <div class="theme-dot theme-dot--cyber active" data-theme="cyber" onclick="switchTheme('cyber')" title="赛博朋克"></div>
+        <div class="theme-dot theme-dot--mint" data-theme="mint" onclick="switchTheme('mint')" title="薄荷春色"></div>
+        <div class="theme-dot theme-dot--gold" data-theme="gold" onclick="switchTheme('gold')" title="黑金"></div>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="菜单"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="section" style="padding-top:120px;min-height:80vh">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="section-tag light">开始行动</div>
+        <h1 class="section-title">开始打造你的<span class="gradient-text">超级个人IP</span></h1>
+        <p class="section-desc">根据你现在的阶段和目标，选择适合你的启动路径。</p>
+        <div class="energy-bar energy-bar--wide"><div class="energy-fill"></div></div>
+      </div>
+
+      <!-- Paths -->
+      <div class="checkout-paths">
+
+        <a href="javascript:alert('【Stripe 支付跳转】\n\n低客单标品，直接通过 Stripe 进行支付。');">
+          <div class="path-card">
+            <div>
+              <p class="path-status">「 状态：不确定方向 」</p>
+              <h3>先做 IP 定位诊断 <span>(¥199 / ¥299)</span></h3>
+              <p>无需等待咨询，点击前往 Stripe 安全支付，获取专属视觉与方向诊断。</p>
+            </div>
+            <div class="path-arrow">💳 购买</div>
+          </div>
+        </a>
+
+        <a href="#wechat-consult" onclick="document.getElementById('wechat-qr').scrollIntoView({behavior:'smooth'});">
+          <div class="path-card">
+            <div>
+              <p class="path-status">「 状态：有明确目标或希望购买标准套餐 」</p>
+              <h3>咨询标准服务套餐 <span>(¥698 - ¥4980)</span></h3>
+              <p>咨询月度起号、分身强化及超级 IP 定制。通过微信确认需求后再获取链接。</p>
+            </div>
+            <div class="path-arrow">&rarr; 咨询</div>
+          </div>
+        </a>
+
+        <a href="#wechat-consult" onclick="document.getElementById('wechat-qr').scrollIntoView({behavior:'smooth'});">
+          <div class="path-card path-card--accent">
+            <div>
+              <p class="path-status">「 状态：想做更完整的高价值 IP 共建与孵化 」</p>
+              <h3>申请联合孵化计划 <span>(申请制)</span></h3>
+              <p>由主理人亲自跟进的深度合伙陪跑。添加微信提交资质申请并进行项目评估。</p>
+            </div>
+            <div class="path-arrow">&rarr; 申请</div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Post-Pay -->
+      <div class="post-pay">
+        <h4>🚀 提交/付款后会发生什么？</h4>
+        <div class="post-pay-steps">
+          <div class="post-pay-step"><span class="num">01.</span><span>确认订单并进入对应服务路径</span></div>
+          <div class="post-pay-step"><span class="num">02.</span><span>确认您的目标平台、账号方向与基础资料</span></div>
+          <div class="post-pay-step"><span class="num">03.</span><span>进行首轮 IP 定位诊断与内容启动</span></div>
+        </div>
+      </div>
+
+      <!-- WeChat Connect -->
+      <div id="wechat-qr" class="wechat-connect">
+        <h3>主理人微信对接</h3>
+        <p>无论你是准备好购买，还是需要协助判断方案，都可以毫无压力地添加微信。<br/>付款及后续服务合同均将在安全环境下对接。</p>
+        <div class="wechat-qr"><span>[ 扫码添加微信 ]</span></div>
+        <p class="wechat-id">WeChat ID: <span>mannibride888</span></p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><img src="img/logo.png" alt="曼妮新娘" class="logo-img" /><div class="logo-text"><span class="logo-cn">曼妮新娘</span><span class="logo-en">MANEE BRIDES</span></div></div>
+          <p>助力每位女性绽放独特美丽<br />让您的价值被世界看见</p>
+          <div class="footer-social"><a href="#" class="social-btn">📕 小红书</a><a href="#" class="social-btn">🎵 抖音</a><a href="#" class="social-btn">🌀 微博</a></div>
+        </div>
+        <div class="footer-links"><h4>服务</h4><ul><li><a href="services.html">IP孵化</a></li><li><a href="services.html">订阅套餐</a></li></ul></div>
+        <div class="footer-links"><h4>关于</h4><ul><li><a href="index.html">关于我们</a></li><li><a href="faq.html">常见问题</a></li></ul></div>
+        <div class="footer-contact"><h4>联系我们</h4><p>📧 hello@maneebrides.shop</p><p>📱 微信：mannibride888</p><p>📍 深圳市南山区科技园</p></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 曼妮新娘 MANEE BRIDES. 保留所有权利.</p><p class="footer-slogan">绽放女性之美 · 成就无限价值</p></div>
+    </div>
+  </footer>
+
+  <!-- Inquiry Modal -->
+  <div class="modal-overlay" id="inquiryOverlay">
+    <div class="modal-box" id="inquiryModal">
+      <button class="modal-close" onclick="closeInquiryModal()">✕</button>
+      <div class="modal-header"><h3 class="modal-title">备用咨询表单</h3><p class="modal-subtitle">建议优先添加主理人微信 1对1沟通</p></div>
+      <div class="partner-form">
+        <input type="text" placeholder="您的称呼" class="modal-input" id="iName" />
+        <input type="text" placeholder="微信号 / 手机号（必填）" class="modal-input" id="iContact" />
+        <textarea placeholder="请简述您的需求..." class="modal-input" id="iDesc" rows="3"></textarea>
+        <button class="btn-primary" onclick="submitInquiry()">提交留言</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wechat-float" id="wechatFloat">
+    <a href="javascript:void(0)" onclick="openInquiryModal()" class="wechat-float-btn" title="留言咨询">
+      <span class="wechat-float-icon">✨</span><span class="wechat-float-label">留言咨询</span>
+    </a>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>服务体系 | 曼妮新娘</title>
+  <meta name="description" content="曼妮新娘服务体系——从IP定位诊断到超级IP定制，为每位高价值女性提供专业的个人品牌打造服务。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Serif+SC:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%23c9896a'/><stop offset='100%25' style='stop-color:%23ff6b9d'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='%230a0a0f'/><text y='.9em' font-size='70' x='12' fill='url(%23g)'>曼</text></svg>" type="image/svg+xml" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="img/logo.png" alt="曼妮新娘" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-cn">曼妮新娘</span>
+          <span class="logo-en">MANEE BRIDES</span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="services.html">服务体系</a></li>
+        <li><a href="faq.html">常见问题</a></li>
+        <li><a href="services.html">订阅套餐</a></li>
+      </ul>
+      <a href="services.html" class="nav-cta">立即订阅</a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="zh" onclick="switchLang('zh')">中</button>
+        <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+      </div>
+      <div class="theme-switcher">
+        <div class="theme-dot theme-dot--cyber active" data-theme="cyber" onclick="switchTheme('cyber')" title="赛博朋克"></div>
+        <div class="theme-dot theme-dot--mint" data-theme="mint" onclick="switchTheme('mint')" title="薄荷春色"></div>
+        <div class="theme-dot theme-dot--gold" data-theme="gold" onclick="switchTheme('gold')" title="黑金"></div>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="section" style="padding-top:120px;min-height:80vh">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="section-header">
+        <h1 class="section-title"><span class="gradient-text">标准服务体系</span></h1>
+        <p class="section-desc">适合按阶段购买服务，快速启动个人IP，建立专业视觉模型。</p>
+        <div class="energy-bar energy-bar--wide"><div class="energy-fill"></div></div>
+      </div>
+
+      <!-- Tier: 199/299 -->
+      <div class="tier-card">
+        <div class="tier-header">
+          <div>
+            <h2>IP定位诊断</h2>
+            <p class="tier-sub">适合刚开始做个人IP、还不清楚自己该怎么定位的人。</p>
+          </div>
+          <div class="price"><span class="currency">¥</span>199 <span class="period">/ 299</span></div>
+        </div>
+        <div class="tier-features">
+          <h4>你将获得：</h4>
+          <ul>
+            <li>一次基础定位分析</li>
+            <li>一个更适合你的平台方向建议</li>
+            <li>一份初步人设方向建议</li>
+            <li>5 个起步内容方向</li>
+            <li>一条账号简介优化建议</li>
+          </ul>
+        </div>
+        <a href="javascript:alert('【Stripe 支付跳转】\n\n低客单直购通道：此按钮将直接拉起 Stripe 收银台。');" class="btn-secondary">直购诊断卡 (Stripe)</a>
+      </div>
+
+      <!-- Tier: 698 -->
+      <div class="tier-card">
+        <div class="tier-header">
+          <div>
+            <h2>单平台基础起号服务</h2>
+            <p class="tier-sub">适合预算有限、希望先从一个平台开始启动的人。</p>
+          </div>
+          <div class="price"><span class="currency">¥</span>698 <span class="period">/ 月</span></div>
+        </div>
+        <div class="tier-features">
+          <h4>你将获得：</h4>
+          <ul>
+            <li>单平台基础定位</li>
+            <li>基础人设整理</li>
+            <li>内容方向建议</li>
+            <li>起号节奏建议</li>
+            <li>轻量持续优化建议</li>
+          </ul>
+        </div>
+        <a href="checkout.html?tier=698" class="btn-secondary">咨询 698 方案</a>
+      </div>
+
+      <!-- Tier: 1280 (Featured) -->
+      <div class="tier-card tier-card--featured">
+        <div class="tier-badge">核心推荐</div>
+        <div class="tier-header">
+          <div>
+            <h2>单平台数字分身强化版</h2>
+            <p class="tier-sub">适合想在小红书或抖音建立更清晰数字分身形象的人。</p>
+          </div>
+          <div class="price"><span class="currency">¥</span>1,280 <span class="period">/ 月</span></div>
+        </div>
+        <div class="tier-features">
+          <h4>你将获得：</h4>
+          <ul>
+            <li>专属数字分身定位</li>
+            <li>单平台风格强化</li>
+            <li>内容主题与表达方向</li>
+            <li>形象感持续迭代建议</li>
+            <li>单平台深度运营辅助</li>
+          </ul>
+        </div>
+        <a href="checkout.html?tier=1280" class="btn-primary">咨询 1280 方案</a>
+      </div>
+
+      <!-- Tier: 4980 -->
+      <div class="tier-card tier-card--premium">
+        <div class="tier-header">
+          <div>
+            <h2>全平台超级IP定制版</h2>
+            <p class="tier-sub">适合想布局更强个人品牌、多平台表达与高价值商业形象的人。</p>
+          </div>
+          <div class="price"><span class="currency">¥</span>4,980 <span class="period">/ 月</span></div>
+        </div>
+        <div class="tier-features">
+          <h4>你将获得：</h4>
+          <ul>
+            <li>全案级IP定位</li>
+            <li>数字分身形象体系</li>
+            <li>多平台方向规划</li>
+            <li>持续内容与形象迭代</li>
+            <li>高价值个人IP定制支持</li>
+          </ul>
+        </div>
+        <a href="checkout.html?tier=4980" class="btn-secondary">申请定制方案</a>
+      </div>
+
+      <!-- ══ JOINT INCUBATION ══ -->
+      <div id="joint-incubation" class="incubation-intro">
+        <div class="section-tag">深度合作</div>
+        <h2 class="section-title"><span class="gradient-text">联合孵化计划</span></h2>
+        <p>适合希望与曼妮新娘长期共建超级个人IP、<br/>持续打造数字分身，并共享成长收益的用户。</p>
+        <div class="energy-bar"><div class="energy-fill"></div></div>
+      </div>
+
+      <div class="incubation-block">
+        <p class="section-desc">联合孵化不是普通服务购买，<br/>而是一种更深度、更长期的合作方式。<br/><br/>它更适合希望长期打造个人品牌、<br/>并愿意与曼妮新娘共同推进内容、平台与成长路径的人。</p>
+      </div>
+
+      <div class="incubation-block incubation-who">
+        <h3>适合谁？</h3>
+        <ul>
+          <li><span class="marker">✦</span><span>想长期做个人IP的人</span></li>
+          <li><span class="marker">✦</span><span>愿意持续投入的人</span></li>
+          <li><span class="marker">✦</span><span>希望有人深度参与个人IP打造的人</span></li>
+          <li><span class="marker">✦</span><span>想与曼妮新娘长期共建的人</span></li>
+        </ul>
+      </div>
+
+      <div class="incubation-block incubation-block--cta">
+        <div class="incubation-watermark">PARTNER</div>
+        <h3 class="section-title">申请制合作</h3>
+        <p class="section-desc">联合孵化计划为申请制。<br/>我们会根据目标、匹配度、投入程度与合作深度进行评估，<br/>再决定是否进入合作。</p>
+        <div class="incubation-tags">
+          <span class="incubation-tag">长期共建</span>
+          <span class="incubation-tag">共享收益</span>
+          <span class="incubation-tag">申请制进入</span>
+        </div>
+        <a href="checkout.html?type=incubation" class="btn-primary" id="incubation-apply-btn">申请联合孵化</a>
+      </div>
+
+      <div class="incubation-block incubation-note">
+        <p>💡 如果你还不确定自己是否适合进入联合孵化，<br/>
+        建议先从<a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">标准服务</a>或
+        <a href="checkout.html?type=diagnostic">IP定位诊断</a>开始。</p>
+      </div>
+
+      <!-- Path Recommendation -->
+      <div class="path-rec">
+        <h3>轻量推荐路径</h3>
+        <ul>
+          <li><span>不确定方向</span><a href="javascript:alert('【Stripe 支付跳转】');">&rarr; 直购诊断卡</a></li>
+          <li><span>想先从一个平台起步</span><a href="checkout.html?tier=698">&rarr; 咨询 ¥698</a></li>
+          <li><span>想强化单平台数字分身</span><a href="checkout.html?tier=1280">&rarr; 咨询 ¥1,280</a></li>
+          <li><span>想做更完整的高价值全平台IP</span><a href="checkout.html?tier=4980">&rarr; 咨询 ¥4,980</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="img/logo.png" alt="曼妮新娘" class="logo-img" />
+            <div class="logo-text"><span class="logo-cn">曼妮新娘</span><span class="logo-en">MANEE BRIDES</span></div>
+          </div>
+          <p>助力每位女性绽放独特美丽<br />让您的价值被世界看见</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">📕 小红书</a>
+            <a href="#" class="social-btn">🎵 抖音</a>
+            <a href="#" class="social-btn">🌀 微博</a>
+          </div>
+        </div>
+        <div class="footer-links"><h4>服务</h4><ul><li><a href="services.html">IP孵化</a></li><li><a href="services.html">订阅套餐</a></li></ul></div>
+        <div class="footer-links"><h4>关于</h4><ul><li><a href="index.html">关于我们</a></li><li><a href="faq.html">常见问题</a></li></ul></div>
+        <div class="footer-contact"><h4>联系我们</h4><p>📧 hello@maneebrides.shop</p><p>📱 微信：mannibride888</p><p>📍 深圳市南山区科技园</p></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 曼妮新娘 MANEE BRIDES. 保留所有权利.</p>
+        <p class="footer-slogan">绽放女性之美 · 成就无限价值</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating CTA -->
+  <div class="wechat-float" id="wechatFloat">
+    <a href="javascript:void(0)" onclick="openInquiryModal()" class="wechat-float-btn" title="立即定制">
+      <span class="wechat-float-icon">✨</span>
+      <span class="wechat-float-label">留言咨询</span>
+    </a>
+  </div>
+
+  <!-- Inquiry Modal -->
+  <div class="modal-overlay" id="inquiryOverlay">
+    <div class="modal-box" id="inquiryModal">
+      <button class="modal-close" onclick="closeInquiryModal()">✕</button>
+      <div class="modal-header">
+        <h3 class="modal-title">备用咨询表单</h3>
+        <p class="modal-subtitle">建议优先添加主理人微信 1对1沟通</p>
+      </div>
+      <div class="partner-form">
+        <input type="text" placeholder="您的称呼" class="modal-input" id="iName" />
+        <input type="text" placeholder="微信号 / 手机号（必填）" class="modal-input" id="iContact" />
+        <textarea placeholder="请简述您的需求..." class="modal-input" id="iDesc" rows="3"></textarea>
+        <button class="btn-primary" onclick="submitInquiry()">提交留言</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
