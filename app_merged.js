@@ -359,37 +359,3 @@ if (matrixSection) {
   });
   nodeObserver.observe(matrixSection);
 }
-
-
-  // Energy Bar Animation logic from C193112
-  function animateStats() {
-    const stats = document.querySelectorAll('.stat-num');
-    const bars = document.querySelectorAll('.stat-bar-fill');
-    
-    stats.forEach(stat => {
-      const target = +stat.getAttribute('data-target');
-      let current = 0;
-      const increment = target / 40;
-      
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          stat.innerText = target;
-          clearInterval(timer);
-        } else {
-          stat.innerText = Math.ceil(current);
-        }
-      }, 30);
-    });
-
-    bars.forEach(bar => {
-      const width = bar.style.width;
-      bar.style.width = '0';
-      setTimeout(() => {
-        bar.style.transition = 'width 1.5s ease-out';
-        bar.style.width = width;
-      }, 300);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => { if(typeof animateStats === 'function') animateStats(); });
