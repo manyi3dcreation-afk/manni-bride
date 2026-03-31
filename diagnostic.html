@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>IP定位诊断 | 曼妮新娘</title>
+  <meta name="description" content="用几分钟填写基本情况，上传照片与参考图，我们为你生成一份专属的个人IP定位建议。曼妮新娘——助你找到最适合的方向。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Serif+SC:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%23c9896a'/><stop offset='100%25' style='stop-color:%23ff6b9d'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='%230a0a0f'/><text y='.9em' font-size='70' x='12' fill='url(%23g)'>曼</text></svg>" type="image/svg+xml" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="img/logo.png" alt="曼妮新娘" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-cn">曼妮新娘</span>
+          <span class="logo-en">MANEE BRIDES</span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="services.html">服务体系</a></li>
+        <li><a href="faq.html">常见问题</a></li>
+        <li><a href="services.html">订阅套餐</a></li>
+      </ul>
+      <a href="services.html" class="nav-cta">立即订阅</a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="zh" onclick="switchLang('zh')">中</button>
+        <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+      </div>
+      <div class="theme-switcher">
+        <div class="theme-dot theme-dot--cyber active" data-theme="cyber" onclick="switchTheme('cyber')" title="赛博朋克"></div>
+        <div class="theme-dot theme-dot--mint" data-theme="mint" onclick="switchTheme('mint')" title="薄荷春色"></div>
+        <div class="theme-dot theme-dot--gold" data-theme="gold" onclick="switchTheme('gold')" title="黑金"></div>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="diag-page" id="diagnosticPage">
+
+    <!-- ═══ 1. HERO ═══ -->
+    <section class="diag-hero">
+      <div class="diag-hero-bg">
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+      </div>
+      <div class="container">
+        <div class="diag-hero-inner">
+          <div class="section-tag">IP 定位诊断</div>
+          <h1 class="diag-hero-title">开始你的 <span class="gradient-text">IP定位诊断</span></h1>
+          <p class="diag-hero-desc">
+            用几分钟填写你的基本情况，上传几张照片或参考图，<br/>
+            我们会结合你的目标、风格倾向与平台方向，<br/>
+            为你生成一份更适合你的个人IP定位建议。
+          </p>
+          <div class="diag-hero-price">
+            <span class="diag-price-tag">¥<strong>199</strong></span>
+            <span class="diag-price-old">¥299</span>
+          </div>
+          <a href="#diag-form" class="btn-primary" id="diag-start-btn">开始填写 ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 2. 适合谁 ═══ -->
+    <section class="section" id="diag-who">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">谁适合做这个诊断</div>
+        </div>
+        <div class="diag-who-grid">
+          <div class="diag-who-item">
+            <div class="diag-who-icon">🧭</div>
+            <p>不知道自己适合什么方向的人</p>
+          </div>
+          <div class="diag-who-item">
+            <div class="diag-who-icon">📱</div>
+            <p>不确定该从哪个平台开始的人</p>
+          </div>
+          <div class="diag-who-item">
+            <div class="diag-who-icon">✨</div>
+            <p>想打造个人IP，但风格和人设还不清楚的人</p>
+          </div>
+          <div class="diag-who-item">
+            <div class="diag-who-icon">🎯</div>
+            <p>想结合自身气质与目标得到建议的人</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 3. 四步流程说明 ═══ -->
+    <section class="section dark-section" id="diag-steps">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag light">流程说明</div>
+          <h2 class="section-title">只需四步，<span class="gradient-text-light">开始你的诊断</span></h2>
+        </div>
+        <div class="diag-steps-row">
+          <div class="diag-step-card">
+            <div class="diag-step-num">01</div>
+            <div class="diag-step-line"></div>
+            <h3>填写基本情况</h3>
+            <p>名字、微信号、职业背景</p>
+          </div>
+          <div class="diag-step-card">
+            <div class="diag-step-num">02</div>
+            <div class="diag-step-line"></div>
+            <h3>上传图片与风格参考</h3>
+            <p>本人照片、喜欢的风格图</p>
+          </div>
+          <div class="diag-step-card">
+            <div class="diag-step-num">03</div>
+            <div class="diag-step-line"></div>
+            <h3>选择想走的方向</h3>
+            <p>平台倾向、内容目标</p>
+          </div>
+          <div class="diag-step-card">
+            <div class="diag-step-num">04</div>
+            <div class="diag-step-line"></div>
+            <h3>支付并进入诊断流程</h3>
+            <p>提交后正式开始分析</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 4. 四步表单 ═══ -->
+    <section class="section" id="diag-form">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">填写信息</div>
+          <h2 class="section-title">请按步骤填写</h2>
+          <p class="section-desc">我们会根据你提交的信息为你做出更精准的诊断建议</p>
+        </div>
+
+        <!-- Step Progress -->
+        <div class="diag-progress">
+          <div class="diag-prog-step active" data-step="1">
+            <span class="prog-num">1</span>
+            <span class="prog-label">基础情况</span>
+          </div>
+          <div class="diag-prog-line"></div>
+          <div class="diag-prog-step" data-step="2">
+            <span class="prog-num">2</span>
+            <span class="prog-label">平台与目标</span>
+          </div>
+          <div class="diag-prog-line"></div>
+          <div class="diag-prog-step" data-step="3">
+            <span class="prog-num">3</span>
+            <span class="prog-label">风格与图片</span>
+          </div>
+          <div class="diag-prog-line"></div>
+          <div class="diag-prog-step" data-step="4">
+            <span class="prog-num">4</span>
+            <span class="prog-label">方向确认</span>
+          </div>
+        </div>
+
+        <!-- Form Steps -->
+        <form id="diagForm" class="diag-form-wrap" onsubmit="return false;">
+
+          <!-- Step 1 -->
+          <div class="diag-form-step active" data-form-step="1">
+            <div class="form-step-header">
+              <h3>Step 1 · 基础情况</h3>
+              <p>让我们先了解你</p>
+            </div>
+            <div class="form-group">
+              <label for="userName">名字 / 昵称 <span class="req">*</span></label>
+              <input type="text" id="userName" class="modal-input" placeholder="你希望我们怎么称呼你" required />
+            </div>
+            <div class="form-group">
+              <label for="userWechat">微信号 <span class="req">*</span></label>
+              <input type="text" id="userWechat" class="modal-input" placeholder="用于后续沟通与结果接收" required />
+            </div>
+            <div class="form-group">
+              <label for="userJob">当前职业 / 身份</label>
+              <input type="text" id="userJob" class="modal-input" placeholder="如：化妆师 / 自由职业 / 大学生" />
+            </div>
+            <div class="form-group">
+              <label>年龄区间（可选）</label>
+              <div class="chip-group">
+                <button type="button" class="chip" data-field="age" data-value="18-24">18-24</button>
+                <button type="button" class="chip" data-field="age" data-value="25-30">25-30</button>
+                <button type="button" class="chip" data-field="age" data-value="31-35">31-35</button>
+                <button type="button" class="chip" data-field="age" data-value="36-40">36-40</button>
+                <button type="button" class="chip" data-field="age" data-value="40+">40+</button>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-primary" onclick="nextStep(2)">下一步 →</button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="diag-form-step" data-form-step="2">
+            <div class="form-step-header">
+              <h3>Step 2 · 平台与目标</h3>
+              <p>你想在哪里发力、想得到什么</p>
+            </div>
+            <div class="form-group">
+              <label>最想做的平台</label>
+              <div class="chip-group">
+                <button type="button" class="chip" data-field="platform" data-value="小红书">📕 小红书</button>
+                <button type="button" class="chip" data-field="platform" data-value="抖音">🎵 抖音</button>
+                <button type="button" class="chip" data-field="platform" data-value="TikTok">🌍 TikTok</button>
+                <button type="button" class="chip" data-field="platform" data-value="微博">🌀 微博</button>
+                <button type="button" class="chip" data-field="platform" data-value="YouTube">▶️ YouTube</button>
+                <button type="button" class="chip" data-field="platform" data-value="不确定">🤔 不确定</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>更想得到什么</label>
+              <div class="chip-group multi">
+                <button type="button" class="chip" data-field="goal" data-value="粉丝增长">粉丝增长</button>
+                <button type="button" class="chip" data-field="goal" data-value="品牌合作">品牌合作</button>
+                <button type="button" class="chip" data-field="goal" data-value="个人品牌">个人品牌</button>
+                <button type="button" class="chip" data-field="goal" data-value="变现收入">变现收入</button>
+                <button type="button" class="chip" data-field="goal" data-value="方向清晰">方向清晰</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="userPain">目前最卡的是哪一步</label>
+              <textarea id="userPain" class="modal-input" rows="3" placeholder="比如：不知道做什么内容、不知道怎么定位、不会拍照…"></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" onclick="prevStep(1)">← 上一步</button>
+              <button type="button" class="btn-primary" onclick="nextStep(3)">下一步 →</button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="diag-form-step" data-form-step="3">
+            <div class="form-step-header">
+              <h3>Step 3 · 风格与图片</h3>
+              <p>帮助我们从视觉层面更了解你</p>
+            </div>
+            <div class="form-group">
+              <label>想走哪种风格</label>
+              <div class="chip-group multi">
+                <button type="button" class="chip" data-field="style" data-value="甜美可爱">🌸 甜美可爱</button>
+                <button type="button" class="chip" data-field="style" data-value="知性优雅">🌿 知性优雅</button>
+                <button type="button" class="chip" data-field="style" data-value="酷飒御姐">🖤 酷飒御姐</button>
+                <button type="button" class="chip" data-field="style" data-value="日系清新">🎌 日系清新</button>
+                <button type="button" class="chip" data-field="style" data-value="欧美高级">💎 欧美高级</button>
+                <button type="button" class="chip" data-field="style" data-value="不确定">🤷 不确定</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>上传 3–6 张本人照片 <span class="req">*</span></label>
+              <div class="upload-zone" id="uploadPersonal">
+                <div class="upload-placeholder">
+                  <span class="upload-icon">📷</span>
+                  <span>点击或拖拽上传你的照片</span>
+                  <span class="upload-hint">支持 JPG / PNG，建议 3-6 张</span>
+                </div>
+                <input type="file" id="personalPhotos" multiple accept="image/*" class="upload-input" />
+              </div>
+              <div class="upload-preview" id="personalPreview"></div>
+            </div>
+            <div class="form-group">
+              <label>可补充参考风格图（可选）</label>
+              <div class="upload-zone" id="uploadRef">
+                <div class="upload-placeholder">
+                  <span class="upload-icon">🎨</span>
+                  <span>上传你喜欢的风格参考图</span>
+                  <span class="upload-hint">博主截图、穿搭灵感等</span>
+                </div>
+                <input type="file" id="refPhotos" multiple accept="image/*" class="upload-input" />
+              </div>
+              <div class="upload-preview" id="refPreview"></div>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" onclick="prevStep(2)">← 上一步</button>
+              <button type="button" class="btn-primary" onclick="nextStep(4)">下一步 →</button>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="diag-form-step" data-form-step="4">
+            <div class="form-step-header">
+              <h3>Step 4 · 方向选择与确认</h3>
+              <p>选择你想尝试的方向</p>
+            </div>
+            <div class="form-group">
+              <label>想尝试哪种方向</label>
+              <div class="chip-group">
+                <button type="button" class="chip" data-field="direction" data-value="美妆博主">💄 美妆博主</button>
+                <button type="button" class="chip" data-field="direction" data-value="穿搭博主">👗 穿搭博主</button>
+                <button type="button" class="chip" data-field="direction" data-value="生活方式">🏡 生活方式</button>
+                <button type="button" class="chip" data-field="direction" data-value="知识分享">📚 知识分享</button>
+                <button type="button" class="chip" data-field="direction" data-value="Vlog记录">🎬 Vlog记录</button>
+                <button type="button" class="chip" data-field="direction" data-value="其他/不确定">💭 其他/不确定</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="userNote">补充说明（可选）</label>
+              <textarea id="userNote" class="modal-input" rows="3" placeholder="任何你想告诉我们的，比如你的优势、困惑、特殊需求…"></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" onclick="prevStep(3)">← 上一步</button>
+              <button type="button" class="btn-primary" onclick="goToPayment()">确认信息，进入支付 →</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- ═══ 5. 支付确认区 ═══ -->
+    <section class="section dark-section diag-section-hidden" id="diag-payment">
+      <div class="container">
+        <div class="diag-payment-card">
+          <div class="diag-pay-header">
+            <div class="section-tag light">确认支付</div>
+            <h2 class="section-title">确认并开始你的<br/><span class="gradient-text-light">IP定位诊断</span></h2>
+            <div class="energy-bar energy-bar--wide"><div class="energy-fill"></div></div>
+          </div>
+          <div class="diag-pay-info">
+            <p>你已经完成了基础信息提交。</p>
+            <p>接下来完成支付后，我们将根据你的目标、风格偏好、平台倾向与图片资料，<br/>为你生成一份更适合你的个人IP方向建议。</p>
+          </div>
+          <div class="diag-pay-summary">
+            <div class="diag-pay-row">
+              <span>IP定位诊断</span>
+              <span class="diag-pay-price">¥199</span>
+            </div>
+            <div class="diag-pay-divider"></div>
+            <div class="diag-pay-row total">
+              <span>应付金额</span>
+              <span class="diag-pay-total">¥199</span>
+            </div>
+          </div>
+          <button class="btn-primary diag-pay-btn" onclick="handlePayment()" id="payBtn">
+            <span>立即支付并开始诊断</span>
+          </button>
+          <div class="diag-pay-trust">
+            <span>🔒 信息加密</span>
+            <span>⚡ 24h内开始</span>
+            <span>💬 1对1沟通</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 6. 支付成功页 ═══ -->
+    <section class="section diag-section-hidden" id="diag-success">
+      <div class="container">
+        <div class="diag-success-card">
+          <div class="diag-success-icon">✅</div>
+          <h2 class="section-title">你的 IP定位诊断<br/><span class="gradient-text">已进入处理流程</span></h2>
+          <div class="energy-bar energy-bar--wide"><div class="energy-fill"></div></div>
+          <div class="diag-success-info">
+            <p>我们已经收到你的资料与支付信息。</p>
+            <p>接下来会结合你的平台目标、风格倾向与图片内容，进入诊断分析流程。</p>
+            <p class="diag-success-highlight">请添加主理人微信，继续后续沟通与结果接收。</p>
+          </div>
+
+          <div class="diag-wechat-card">
+            <div class="diag-wechat-qr">
+              <div class="qr-placeholder-inner">
+                <span>📱</span>
+                <span>微信二维码</span>
+              </div>
+            </div>
+            <div class="diag-wechat-info">
+              <p class="diag-wechat-label">主理人微信</p>
+              <p class="diag-wechat-id" id="wechatIdDisplay">mannibride888</p>
+              <div class="diag-wechat-actions">
+                <button class="btn-secondary diag-copy-btn" onclick="copyWechatId()" id="copyWechatBtn">
+                  📋 复制微信号
+                </button>
+                <button class="btn-primary diag-added-btn" onclick="confirmAdded()">
+                  ✓ 我已添加微信
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="diag-next-steps">
+            <h3>接下来的流程</h3>
+            <div class="diag-next-list">
+              <div class="diag-next-item">
+                <span class="diag-next-num">1</span>
+                <span>添加主理人微信</span>
+              </div>
+              <div class="diag-next-item">
+                <span class="diag-next-num">2</span>
+                <span>确认资料已收到</span>
+              </div>
+              <div class="diag-next-item">
+                <span class="diag-next-num">3</span>
+                <span>进入诊断分析（1-3 个工作日）</span>
+              </div>
+              <div class="diag-next-item">
+                <span class="diag-next-num">4</span>
+                <span>微信发送诊断报告</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 7. 安心提示 ═══ -->
+    <section class="section" id="diag-reassure">
+      <div class="container">
+        <div class="diag-reassure-card">
+          <div class="diag-reassure-icon">💡</div>
+          <p>如果你还不确定自己是否适合长期服务，<br/>
+          建议先从 <strong>IP定位诊断</strong> 开始。<br/>
+          在更清楚方向之后，再决定是否进入后续合作，会更稳。</p>
+          <a href="#diag-form" class="btn-secondary">开始诊断</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="img/logo.png" alt="曼妮新娘" class="logo-img" />
+            <div class="logo-text"><span class="logo-cn">曼妮新娘</span><span class="logo-en">MANEE BRIDES</span></div>
+          </div>
+          <p>助力每位女性绽放独特美丽<br />让您的价值被世界看见</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">📕 小红书</a>
+            <a href="#" class="social-btn">🎵 抖音</a>
+            <a href="#" class="social-btn">🌀 微博</a>
+          </div>
+        </div>
+        <div class="footer-links"><h4>服务</h4><ul><li><a href="services.html">IP孵化</a></li><li><a href="services.html">订阅套餐</a></li></ul></div>
+        <div class="footer-links"><h4>关于</h4><ul><li><a href="index.html">关于我们</a></li><li><a href="faq.html">常见问题</a></li></ul></div>
+        <div class="footer-contact"><h4>联系我们</h4><p>📧 hello@maneebrides.shop</p><p>📱 微信：mannibride888</p><p>📍 深圳市南山区科技园</p></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 曼妮新娘 MANEE BRIDES. 保留所有权利.</p>
+        <p class="footer-slogan">绽放女性之美 · 成就无限价值</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+  /* ══ Diagnostic Page Logic ══ */
+  (function() {
+    const formData = {
+      age: '', platform: '', goal: [], style: [], direction: '',
+    };
+
+    /* ─ Chip selection ─ */
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const field = chip.dataset.field;
+        const value = chip.dataset.value;
+        const isMulti = chip.closest('.chip-group')?.classList.contains('multi');
+
+        if (isMulti) {
+          chip.classList.toggle('active');
+          if (!Array.isArray(formData[field])) formData[field] = [];
+          if (chip.classList.contains('active')) {
+            formData[field].push(value);
+          } else {
+            formData[field] = formData[field].filter(v => v !== value);
+          }
+        } else {
+          chip.closest('.chip-group').querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          formData[field] = value;
+        }
+      });
+    });
+
+    /* ─ File upload preview ─ */
+    function setupUpload(inputId, previewId) {
+      const input = document.getElementById(inputId);
+      const preview = document.getElementById(previewId);
+      const zone = input?.closest('.upload-zone');
+
+      if (!input || !preview) return;
+
+      zone?.addEventListener('click', () => input.click());
+      zone?.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+      zone?.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+      zone?.addEventListener('drop', e => {
+        e.preventDefault();
+        zone.classList.remove('drag-over');
+        input.files = e.dataTransfer.files;
+        showPreview(input.files, preview);
+      });
+
+      input.addEventListener('change', () => showPreview(input.files, preview));
+    }
+
+    function showPreview(files, container) {
+      container.innerHTML = '';
+      Array.from(files).forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+          const div = document.createElement('div');
+          div.className = 'preview-thumb';
+          div.innerHTML = `<img src="${e.target.result}" alt="preview" />`;
+          container.appendChild(div);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    setupUpload('personalPhotos', 'personalPreview');
+    setupUpload('refPhotos', 'refPreview');
+
+    /* ─ Step navigation ─ */
+    window.nextStep = function(step) {
+      // Validate current step
+      if (step === 2) {
+        const name = document.getElementById('userName')?.value;
+        const wechat = document.getElementById('userWechat')?.value;
+        if (!name || !wechat) {
+          alert('请填写名字和微信号');
+          return;
+        }
+      }
+      goToStep(step);
+    };
+
+    window.prevStep = function(step) {
+      goToStep(step);
+    };
+
+    function goToStep(step) {
+      document.querySelectorAll('.diag-form-step').forEach(s => s.classList.remove('active'));
+      document.querySelector(`[data-form-step="${step}"]`)?.classList.add('active');
+
+      document.querySelectorAll('.diag-prog-step').forEach(s => {
+        const sNum = parseInt(s.dataset.step);
+        s.classList.toggle('active', sNum === step);
+        s.classList.toggle('done', sNum < step);
+      });
+
+      // Scroll to form
+      document.getElementById('diag-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ─ Go to payment ─ */
+    window.goToPayment = function() {
+      const paySection = document.getElementById('diag-payment');
+      paySection.classList.remove('diag-section-hidden');
+      paySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    /* ─ Handle payment ─ */
+    window.handlePayment = function() {
+      const btn = document.getElementById('payBtn');
+      btn.innerHTML = '<span class="pay-loading">处理中...</span>';
+      btn.disabled = true;
+
+      // Simulate payment processing
+      setTimeout(() => {
+        document.getElementById('diag-payment').classList.add('diag-section-hidden');
+        const successSection = document.getElementById('diag-success');
+        successSection.classList.remove('diag-section-hidden');
+
+        // Hide form
+        document.getElementById('diag-form').style.display = 'none';
+
+        successSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 1500);
+    };
+
+    /* ─ Copy WeChat ID ─ */
+    window.copyWechatId = function() {
+      const id = 'mannibride888';
+      navigator.clipboard.writeText(id).then(() => {
+        const btn = document.getElementById('copyWechatBtn');
+        btn.innerHTML = '✅ 已复制';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = '📋 复制微信号';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = id;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        const btn = document.getElementById('copyWechatBtn');
+        btn.innerHTML = '✅ 已复制';
+        setTimeout(() => { btn.innerHTML = '📋 复制微信号'; }, 2000);
+      });
+    };
+
+    /* ─ Confirm added ─ */
+    window.confirmAdded = function() {
+      const card = document.querySelector('.diag-wechat-card');
+      card.innerHTML = `
+        <div style="text-align:center;padding:32px 20px;">
+          <div style="font-size:3rem;margin-bottom:16px;">🎉</div>
+          <h3 style="font-size:1.3rem;color:var(--text);margin-bottom:12px;font-weight:600;">太好了！</h3>
+          <p style="color:var(--text-2);line-height:1.8;">我们会在微信和你确认资料，<br/>并在 1-3 个工作日内完成诊断分析。<br/>期待为你找到最适合的方向 ✨</p>
+        </div>`;
+    };
+
+  })();
+  </script>
+
+</body>
+</html>
