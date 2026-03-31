@@ -47,41 +47,22 @@
       <div class="hero-particles" id="particles"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span class="badge-glow">专注美妆 · 助力每位女性绽放无限价值</span>
+            <div class="hero-badge" style="margin-bottom: 2rem;">
+        <span class="badge-dot" style="background:var(--primary);"></span>
+        <span class="badge-glow" style="color:var(--text); letter-spacing: 2px;">专注美妆 · 曼妮新娘</span>
       </div>
-      <h1 class="hero-title">
-        <span class="title-line-1">为您打造</span>
-        <span class="title-line-2 gradient-text">百万网红</span>
-        <span class="title-line-3">超级个人IP</span>
+      <h1 class="hero-title" style="margin-bottom: 2.5rem;">
+        <span class="title-line-1" style="font-weight: 300; font-size: 2.8rem; display:block;">为你打造 7×24 持续进化的</span>
+        <span class="title-line-2 gradient-text" style="font-size: 4.5rem; line-height: 1.2;">超级个人IP</span>
       </h1>
-      <p class="hero-desc">
-        我们相信每位女性都拥有绽放的力量<br />
-        曼妮新娘助您将美丽化为影响力，将价值照进现实
+      <p class="hero-desc" style="font-size: 1.2rem; line-height: 1.8; max-width: 600px; margin: 0 auto 3rem auto; color: var(--text-2); font-weight: 300;">
+        从人设、形象、内容到平台运营，曼妮新娘帮你打造数字分身与超级个人IP，<br/>让你被看见、被记住，并逐步走向更高价值的成交。
       </p>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-bar"><div class="stat-bar-fill" style="width:85%"></div></div>
-          <span class="stat-num" data-target="500">0</span><span class="stat-unit">+</span>
-          <span class="stat-label">成功孵化IP</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-bar bar-gold"><div class="stat-bar-fill" style="width:90%"></div></div>
-          <span class="stat-num" data-target="100">0</span><span class="stat-unit">万+</span>
-          <span class="stat-label">平均粉丝量级</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-bar bar-cyan"><div class="stat-bar-fill" style="width:98%"></div></div>
-          <span class="stat-num" data-target="98">0</span><span class="stat-unit">%</span>
-          <span class="stat-label">客户满意度</span>
-        </div>
+      
+      <div class="hero-actions" style="margin-top: 2rem;">
+        <a href="#plans" class="btn-primary" id="hero-start-btn" style="padding: 1.2rem 3rem; font-size: 1.1rem; border-radius: 40px; box-shadow: 0 0 30px rgba(255,107,157,0.3);">查看服务套餐</a>
+        <a href="#faq-contact" class="btn-secondary" id="hero-learn-btn" style="padding: 1.2rem 3rem; font-size: 1.1rem; border-radius: 40px; background: rgba(255,255,255,0.05); color: #fff;">先做IP诊断</a>
       </div>
-      <div class="hero-dual-cta">
-          <button class="dual-cta-btn cta-c" id="hero-cta-c" onclick="openUploadModal()">
-            <div class="dcta-icon">✨</div>
     </div>
     <div class="hero-visual">
       <div class="hero-card floating">
@@ -122,241 +103,209 @@
       <span>向下探索</span>
     </div>
   </section>
-
-  
-
-  <!-- ══ 赛道橱窗 ══ -->
-  <section class="section tracks-section" id="tracks">
+  <!-- ══ V1: WHAT WE DO ══ -->
+  <section class="what-we-do section dark-section" id="what-we-do" style="padding: 8rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
     <div class="container">
-      <div class="section-header">
-        <div class="section-tag">选择赛道</div>
-        <h2 class="section-title">6大专属赛道<br /><span class="gradient-text">找到属于您的风格与方向</span></h2>
-        <p class="section-desc">每条赛道都是经过AI算法验证的高增长路径，点击查看示例与代表IP</p>
-      </div>
-      <div class="tracks-grid">
-        <div class="track-card" id="track-1" onclick="selectTrack(this,'dance')">
-          <div class="track-bg" style="--tgc1:#7c3aed;--tgc2:#c026d3"></div>
-          <div class="track-icon">💃</div>
-          <div class="track-content">
-            <div class="track-badge">🔥 最热赛道</div>
-            <h3>唱跳偶像</h3>
-            <p>日产30+条爆款短视频，快速养成高粘度粉丝群体，直接接商单赚美金</p>
-            <div class="track-meta">
-              <span class="track-platform">抖音</span>
-              <span class="track-platform">Instagram</span>
-              <span class="track-platform">TikTok</span>
-            </div>
-            <div class="track-rep">
-              <div class="track-rep-avatar" style="background:linear-gradient(135deg,#7c3aed,#c026d3)">晚</div>
-              <span>代表IP：晚棠</span>
-            </div>
-          </div>
-          <div class="track-select-btn">选择此赛道 →</div>
-        </div>
-
-        <div class="track-card" id="track-2" onclick="selectTrack(this,'shopping')">
-          <div class="track-bg" style="--tgc1:#c9896a;--tgc2:#f5c842"></div>
-          <div class="track-icon">🛍️</div>
-          <div class="track-content">
-            <div class="track-badge">💰 高变现</div>
-            <h3>生活带货</h3>
-            <p>一键生成AI试穿效果，小红书爆款AI服装带货，极低成本撬动全球顶尖算力</p>
-            <div class="track-meta">
-              <span class="track-platform">小红书</span>
-              <span class="track-platform">YouTube</span>
-              <span class="track-platform">微博</span>
-            </div>
-            <div class="track-rep">
-              <div class="track-rep-avatar" style="background:linear-gradient(135deg,#c9896a,#f5c842)">少</div>
-              <span>代表IP：少华</span>
-            </div>
-          </div>
-          <div class="track-select-btn">选择此赛道 →</div>
-        </div>
-
-        <div class="track-card" id="track-3" onclick="selectTrack(this,'podcast')">
-          <div class="track-bg" style="--tgc1:#0ea5e9;--tgc2:#6366f1"></div>
-          <div class="track-icon">🎙️</div>
-          <div class="track-content">
-            <div class="track-badge">🌐 国际化</div>
-            <h3>国际播客</h3>
-            <p>数字人搭配多语种翻译，把流量放大到全球，无论内容还是跨境贸易均可直接接海外商单</p>
-            <div class="track-meta">
-              <span class="track-platform">X</span>
-              <span class="track-platform">Instagram</span>
-              <span class="track-platform">YouTube</span>
-            </div>
-            <div class="track-rep">
-              <div class="track-rep-avatar" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)">青</div>
-              <span>代表IP：卢青</span>
-            </div>
-          </div>
-          <div class="track-select-btn">选择此赛道 →</div>
-        </div>
-
-        <div class="track-card" id="track-4" onclick="selectTrack(this,'fashion')">
-          <div class="track-bg" style="--tgc1:#be185d;--tgc2:#9d174d"></div>
-          <div class="track-icon">👗</div>
-          <div class="track-content">
-            <div class="track-badge">✨ 高级感</div>
-            <h3>高定时尚</h3>
-            <p>轻奢美妆与高级穿搭博主，专注时尚内容，吸引高净值品牌合作，打造精致格调个人IP</p>
-            <div class="track-meta">
-              <span class="track-platform">小红书</span>
-              <span class="track-platform">微博</span>
-              <span class="track-platform">Instagram</span>
-            </div>
-            <div class="track-rep">
-              <div class="track-rep-avatar" style="background:linear-gradient(135deg,#be185d,#9d174d)">时</div>
-              <span>即将开放</span>
-            </div>
-          </div>
-          <div class="track-select-btn">选择此赛道 →</div>
-        </div>
-
-        <div class="track-card" id="track-5" onclick="selectTrack(this,'bride')">
-          <div class="track-bg" style="--tgc1:#db2777;--tgc2:#c9896a"></div>
-          <div class="track-icon">💍</div>
-          <div class="track-content">
-            <div class="track-badge">💎 核心优势</div>
-            <h3>新娘美妆</h3>
-            <p>专注婚礼美妆赛道，连接数百个婚礼品牌资源，精准触达新娘场景高消费群体</p>
-            <div class="track-meta">
-              <span class="track-platform">小红书</span>
-              <span class="track-platform">抖音</span>
-              <span class="track-platform">微博</span>
-            </div>
-            <div class="track-rep">
-              <div class="track-rep-avatar" style="background:linear-gradient(135deg,#db2777,#c9896a)">婚</div>
-              <span>曼妮核心赛道</span>
-            </div>
-          </div>
-          <div class="track-select-btn">选择此赛道 →</div>
-        </div>
-
-        <div class="track-card" id="track-6" onclick="selectTrack(this,'anime')">
-          <div class="track-bg" style="--tgc1:#8b5cf6;--tgc2:#06b6d4"></div>
-          <div class="track-icon">🌸</div>
-          <div class="track-content">
-            <div class="track-badge">🎌 二次元</div>
-            <h3>二次元萌系</h3>
-            <p>AI动漫化风格定制，打入Z世代圈层，在B站、微博超话积累高粘性二次元粉丝群体</p>
-            <div class="track-meta">
-              <span class="track-platform">B站</span>
-              <span class="track-platform">微博</span>
-              <span class="track-platform">抖音</span>
-            </div>
-            <div class="track-rep">
-              <div class="track-rep-avatar" style="background:linear-gradient(135deg,#8b5cf6,#06b6d4)">萌</div>
-              <span>即将开放</span>
-            </div>
-          </div>
-          <div class="track-select-btn">选择此赛道 →</div>
+      <div class="section-header" style="max-width: 800px; margin: 0 auto 5rem auto;">
+        <div class="section-tag light" style="letter-spacing: 3px;">业务本质</div>
+        <h2 class="section-title light" style="font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; line-height: 1.4; margin-bottom: 2rem;">
+          我们不只帮你发内容，<br/><span class="gradient-text-light" style="font-family: 'Noto Serif SC', serif; font-weight: 300;">我们帮你打造能持续进化的超级IP。</span>
+        </h2>
+        <div class="elegant-text" style="font-size: 1.15rem; color: var(--text-2); line-height: 2.2; font-weight: 300; text-align: left; padding: 2rem; background: rgba(255,255,255,0.02); border-left: 1px solid var(--primary); backdrop-filter: blur(10px);">
+          我们不是普通代运营，更不是传统婚庆站。<br/>
+          曼妮新娘是一个帮助女性用户打造<strong style="color:#fff; font-weight:500;">超级个人IP与数字分身</strong>的服务系统。<br/><br/>
+          从账号定位，到数字分身形象；<br/>
+          从内容方向，到平台运营；<br/>
+          从前端曝光，到咨询承接；<br/>
+          <strong style="color:var(--primary); font-weight:500;">为你建立一套真正能走向商业价值的个人品牌生态。</strong>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ IP名人堂 ══ -->
-  <section class="section ips-section dark-section" id="ips">
+  <!-- ══ V1: WHO IS IT FOR ══ -->
+  <section class="target-audience section" id="target-audience" style="padding: 6rem 0; position: relative;">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag light">旗下明星IP</div>
-        <h2 class="section-title light">她们正在全球绽放<br /><span class="gradient-text-light">每一个都是真实的成功</span></h2>
-        <p class="section-desc light">曼妮新娘旗下核心虚拟IP矩阵，全球8大平台持续运营，每天自动产出内容、积累粉丝、变现收益</p>
+        <div class="section-tag" style="letter-spacing: 3px;">服务人群</div>
+        <h2 class="section-title" style="font-weight: 300;">你是否正是<span class="gradient-text">我们需要寻找的她？</span></h2>
       </div>
-      <div class="ips-grid">
+      <div class="audience-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 4rem;">
+        <div class="audience-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem; border-radius: 16px; backdrop-filter: blur(10px); transition: all 0.3s ease;">
+          <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">01</div>
+          <p style="font-size: 1.1rem; color: #fff; font-weight: 300; line-height: 1.6;">想打造个人IP，但不知道从哪里开始的人</p>
+        </div>
+        <div class="audience-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem; border-radius: 16px; backdrop-filter: blur(10px); transition: all 0.3s ease;">
+          <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">02</div>
+          <p style="font-size: 1.1rem; color: #fff; font-weight: 300; line-height: 1.6;">想拥有专属、高颜值的数字分身形象的人</p>
+        </div>
+        <div class="audience-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem; border-radius: 16px; backdrop-filter: blur(10px); transition: all 0.3s ease;">
+          <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">03</div>
+          <p style="font-size: 1.1rem; color: #fff; font-weight: 300; line-height: 1.6;">想在小红书、抖音、TikTok、海外等全矩阵平台发力的人</p>
+        </div>
+        <div class="audience-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem; border-radius: 16px; backdrop-filter: blur(10px); transition: all 0.3s ease;">
+          <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">04</div>
+          <p style="font-size: 1.1rem; color: #fff; font-weight: 300; line-height: 1.6;">想把优质内容、高雅形象与商业变现无缝连接起来的人</p>
+        </div>
+        <div class="audience-card" style="background: linear-gradient(135deg, rgba(255,107,157,0.1), rgba(10,10,15,0.1)); border: 1px solid var(--primary); padding: 2.5rem; border-radius: 16px; backdrop-filter: blur(10px); transition: all 0.3s ease;">
+          <div style="font-size: 2rem; margin-bottom: 1rem; color: var(--primary);">🌟</div>
+          <p style="font-size: 1.1rem; color: #fff; font-weight: 400; line-height: 1.6;">想站上更大商业舞台，获得长尾与复利溢价的独立女性</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="ip-profile-card reveal" id="ip-wantang">
-          <div class="ip-profile-img-wrap">
-            <img src="img/ip-wantang.jpg" alt="晚棠" class="ip-profile-img"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="ip-profile-placeholder" style="display:none;--ipc1:#7c3aed;--ipc2:#c026d3">
-              <span class="ipp-char">晚棠</span><span class="ipp-role">御姐舞蹈IP</span>
-            </div>
-            <div class="ip-profile-glow" style="--gc:#7c3aed"></div>
+  <!-- ══ V1: WORKFLOW ══ -->
+  <section class="workflow section dark-section" id="workflow" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag light" style="letter-spacing: 3px;">合作旅程</div>
+        <h2 class="section-title light" style="font-weight: 300;">标准化的五步闭环<br/><span class="gradient-text-light">走向可见度、信任与商业变现</span></h2>
+      </div>
+      <div class="workflow-timeline" style="margin-top: 4rem; position: relative;">
+        <!-- Vertical Line -->
+        <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--primary), transparent); opacity: 0.3; transform: translateX(-50%);" class="mobile-hide-line"></div>
+        
+        <div class="wf-step" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4rem; position: relative;">
+          <div style="width: 45%; text-align: right; padding-right: 2rem;">
+            <h3 style="color: #fff; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;">I. 诊断定位</h3>
+            <p style="color: var(--text-2); font-weight: 300; line-height: 1.6;">深度诊断你的基因、特长与当下局势，明确唯一的方向脉络。</p>
           </div>
-          <div class="ip-profile-info">
-            <div class="ip-profile-header">
-              <div><h3>晚 棠</h3><span class="ip-profile-en">WANTANG</span></div>
-              <div class="ip-status"><span class="status-dot"></span>运营中</div>
+          <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--primary); z-index: 2; box-shadow: 0 0 15px var(--primary);"></div>
+          <div style="width: 45%;"></div>
+        </div>
+
+        <div class="wf-step" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4rem; position: relative; flex-direction: row-reverse;">
+          <div style="width: 45%; text-align: left; padding-left: 2rem;">
+            <h3 style="color: #fff; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;">II. 数字分身</h3>
+            <p style="color: var(--text-2); font-weight: 300; line-height: 1.6;">无需繁琐出镜，建立独属你、极高颜值的虚拟/混淆数字分身形象。</p>
+          </div>
+          <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--secondary); z-index: 2;"></div>
+          <div style="width: 45%;"></div>
+        </div>
+
+        <div class="wf-step" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4rem; position: relative;">
+          <div style="width: 45%; text-align: right; padding-right: 2rem;">
+            <h3 style="color: #fff; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;">III. 平台策略</h3>
+            <p style="color: var(--text-2); font-weight: 300; line-height: 1.6;">量身定制各大社媒的重点起号策略与内容风格白皮书。</p>
+          </div>
+          <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg-card); border: 2px solid #00f2fe; z-index: 2;"></div>
+          <div style="width: 45%;"></div>
+        </div>
+
+        <div class="wf-step" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4rem; position: relative; flex-direction: row-reverse;">
+          <div style="width: 45%; text-align: left; padding-left: 2rem;">
+            <h3 style="color: #fff; font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;">IV. 持续输出</h3>
+            <p style="color: var(--text-2); font-weight: 300; line-height: 1.6;">开始频密、强视觉吸引力的内容分发，并伴随数据反馈优化。</p>
+          </div>
+          <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--primary); z-index: 2;"></div>
+          <div style="width: 45%;"></div>
+        </div>
+
+        <div class="wf-step" style="display: flex; justify-content: space-between; align-items: center; position: relative;">
+          <div style="width: 45%; text-align: right; padding-right: 2rem;">
+            <h3 style="color: var(--primary); font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;">V. 收获变现</h3>
+            <p style="color: var(--text-2); font-weight: 300; line-height: 1.6;">积累核心势能，形成高强度的信任场域，顺利完成商业成交。</p>
+          </div>
+          <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--primary); border: 2px solid #fff; z-index: 2; box-shadow: 0 0 20px var(--primary);"></div>
+          <div style="width: 45%;"></div>
+        </div>
+      </div>
+    </div>
+    <style>
+      @media (max-width: 768px) {
+        .mobile-hide-line { left: 24px !important; }
+        .wf-step { flex-direction: row !important; justify-content: flex-start !important; }
+        .wf-step > div:first-child { width: auto !important; text-align: left !important; padding: 0 0 0 3rem !important; order: 2; margin-bottom:2rem; }
+        .wf-step > div:nth-child(2) { position: absolute; left: 12px; top: 0; order: 1; }
+        .wf-step > div:last-child { display: none; }
+      }
+    </style>
+  </section>
+
+  <!-- ══ V1: PRICING PLANS (4 Tiers) ══ -->
+  <section class="plans section" id="plans" style="padding: 6rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag" style="letter-spacing: 3px;">服务套餐预览</div>
+        <h2 class="section-title" style="font-weight: 300;">开始你的进化之旅<br/><span class="gradient-text">从此刻的一份承诺开始</span></h2>
+      </div>
+      <div class="plans-v1-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 4rem;">
+        
+        <!-- Tier 1 -->
+        <div class="pv1-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2.5rem 1.5rem; text-align: center; display: flex; flex-direction: column;">
+          <h3 style="font-size: 1.3rem; color: #fff; font-weight: 400; margin-bottom: 0.5rem;">IP定位诊断</h3>
+          <div style="font-size: 2.2rem; color: var(--text); font-weight: 300; margin: 1rem 0; font-family: 'Playfair Display', serif;"><span style="font-size:0.9rem">¥</span> 199 <span style="font-size:0.9rem; color:var(--text-3)">/ 299</span></div>
+          <p style="color: var(--text-2); font-size: 0.9rem; font-weight: 300; margin-bottom: 2rem; flex-grow: 1;">适合：准备起步，需诊断报告的人。<br/><span style="opacity:0.6;font-size:0.8rem">(图文/视频版分析)</span></p>
+          <a href="#faq-contact" class="btn-secondary" style="border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #fff; padding: 0.8rem; border-radius: 8px; font-size: 0.95rem;">先做诊断</a>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="pv1-card" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2.5rem 1.5rem; text-align: center; display: flex; flex-direction: column;">
+          <h3 style="font-size: 1.3rem; color: #fff; font-weight: 400; margin-bottom: 0.5rem;">单平台基础起号</h3>
+          <div style="font-size: 2.2rem; color: var(--text); font-weight: 300; margin: 1rem 0; font-family: 'Playfair Display', serif;"><span style="font-size:0.9rem">¥</span> 698 <span style="font-size:0.9rem; color:var(--text-3)">/ 月</span></div>
+          <p style="color: var(--text-2); font-size: 0.9rem; font-weight: 300; margin-bottom: 2rem; flex-grow: 1;">适合：有了方向，需要陪跑稳定更新与冷启动破局的人。</p>
+          <a href="#faq-contact" class="btn-primary" style="background: rgba(255,255,255,0.1); color: #fff; padding: 0.8rem; border-radius: 8px; font-size: 0.95rem;">咨询 698 方案</a>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="pv1-card" style="position: relative; background: linear-gradient(180deg, rgba(255,107,157,0.05), rgba(10,10,15,0.5)); border: 1px solid var(--primary); border-radius: 12px; padding: 2.5rem 1.5rem; text-align: center; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 0 30px rgba(255,107,157,0.1);">
+          <div style="position: absolute; top:0; left:50%; transform:translateX(-50%); background: var(--primary); color:#fff; font-size:0.75rem; padding: 0.2rem 1rem; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;">主力推介</div>
+          <h3 style="font-size: 1.3rem; color: #fff; font-weight: 400; margin-bottom: 0.5rem; margin-top: 1rem;">数字分身强化版</h3>
+          <div style="font-size: 2.2rem; color: var(--primary); font-weight: 300; margin: 1rem 0; font-family: 'Playfair Display', serif;"><span style="font-size:0.9rem">¥</span> 1,280 <span style="font-size:0.9rem; color:var(--text-3)">/ 月</span></div>
+          <p style="color: var(--text-2); font-size: 0.9rem; font-weight: 300; margin-bottom: 2rem; flex-grow: 1;">适合：需要精美视觉升维，用数字分身建立高视觉壁垒的客户。</p>
+          <a href="#faq-contact" class="btn-primary" style="padding: 0.8rem; border-radius: 8px; font-size: 0.95rem;">咨询 1280 方案</a>
+        </div>
+
+        <!-- Tier 4 -->
+        <div class="pv1-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(201,137,106,0.3); border-radius: 12px; padding: 2.5rem 1.5rem; text-align: center; display: flex; flex-direction: column;">
+          <h3 style="font-size: 1.3rem; color: #c9896a; font-weight: 400; margin-bottom: 0.5rem;">全网超级IP定制</h3>
+          <div style="font-size: 2.2rem; color: #c9896a; font-weight: 300; margin: 1rem 0; font-family: 'Playfair Display', serif;"><span style="font-size:0.9rem">¥</span> 4,980 <span style="font-size:0.9rem; color:var(--text-3)">/ 月</span></div>
+          <p style="color: var(--text-2); font-size: 0.9rem; font-weight: 300; margin-bottom: 2rem; flex-grow: 1;">适合：成熟玩家、高净值女性，全网矩阵高举高打独家护航。</p>
+          <a href="#faq-contact" class="btn-secondary" style="border: 1px solid #c9896a; background: transparent; color: #c9896a; padding: 0.8rem; border-radius: 8px; font-size: 0.95rem;">申请定制方案</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ V1: FAQ & CONTACT ══ -->
+  <section class="faq-contact section dark-section" id="faq-contact" style="padding: 6rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="container">
+      <div class="contact-grid" style="display: flex; flex-wrap: wrap; gap: 4rem;">
+        
+        <!-- Left: FAQ -->
+        <div style="flex: 1; min-width: 300px;">
+          <div class="section-tag light" style="letter-spacing: 3px;">常见疑虑</div>
+          <h2 style="font-size: 2rem; font-weight: 300; color:#fff; margin-bottom: 3rem;">在开启行动之前，<br/>你可能想问：</h2>
+          
+          <div class="faq-list">
+            <div style="margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;">
+              <h4 style="font-weight: 400; color:#fff; font-size: 1.1rem; margin-bottom: 0.8rem;">Q: 什么是数字分身？跟真人差距大吗？</h4>
+              <p style="font-size: 0.95rem; color:var(--text-2); font-weight: 300; line-height: 1.6;">A: 是曼妮首创结合顶级前沿模型构建的虚拟资产。不需要你每天耗时化妆出境，但呈现的质感和逼真度足以撑起高奢调性。</p>
             </div>
-            <div class="ip-track-pills">
-              <span class="track-pill" style="--pc:#7c3aed">💃 唱跳偶像</span>
-              <span class="track-pill" style="--pc:#333">🇧🇪 比利时</span>
-            </div>
-            <p class="ip-profile-desc">专注现代舞与当代舞内容，借用已被算法验证的爆款元素，每日量产爆款短视频，在抖音、Instagram、TikTok积累高粘度粉丝群体。</p>
-            <div class="ip-stats-row">
-              <div class="ip-stat"><span class="ip-stat-num">286<em>万</em></span><span class="ip-stat-label">总粉丝</span></div>
-              <div class="ip-stat"><span class="ip-stat-num">+3,240</span><span class="ip-stat-label">日增粉丝</span></div>
-              <div class="ip-stat"><span class="ip-stat-num">47<em>条</em></span><span class="ip-stat-label">日均内容</span></div>
-            </div>
-            <div class="ip-platforms">
-              <span class="plt-tag">抖音</span><span class="plt-tag">Instagram</span>
-              <span class="plt-tag">TikTok</span><span class="plt-tag">小红书</span>
+            <div style="margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;">
+              <h4 style="font-weight: 400; color:#fff; font-size: 1.1rem; margin-bottom: 0.8rem;">Q: 为什么不保证粉丝数量而强调商业价值？</h4>
+              <p style="font-size: 0.95rem; color:var(--text-2); font-weight: 300; line-height: 1.6;">A: 虚假的粉丝数字是最廉价的。我们在意的是你的“人设壁垒”和“客单价溢价能力”，为你筛选出愿意为高价值买单的核心人群。</p>
             </div>
           </div>
         </div>
 
-        <div class="ip-profile-card featured-ip reveal" id="ip-shaohua">
-          <div class="ip-featured-badge">⭐ 明星IP</div>
-          <div class="ip-profile-img-wrap">
-            <img src="img/ip-shaohua.jpg" alt="少华" class="ip-profile-img"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="ip-profile-placeholder" style="display:none;--ipc1:#c9896a;--ipc2:#f5c842">
-              <span class="ipp-char">少华</span><span class="ipp-role">生活带货IP</span>
+        <!-- Right: Contact / Payment Entry -->
+        <div style="flex: 1; min-width: 300px;">
+          <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 3rem; border-radius: 16px; text-align: center; backdrop-filter: blur(10px);">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">💎</div>
+            <h3 style="font-size: 1.6rem; color: #fff; font-weight: 300; margin-bottom: 1rem;">准备好让世界看见你了吗？</h3>
+            <p style="color: var(--text-2); font-weight: 300; margin-bottom: 2rem; font-size:0.95rem;">从一份初识沟通开始，扫码添加主理人微信。</p>
+            
+            <div style="background: rgba(255,255,255,0.05); width: 140px; height: 140px; margin: 0 auto 2rem auto; border-radius: 8px; display: flex; justify-content: center; align-items: center; border:1px solid rgba(255,255,255,0.1);">
+              <span style="color: #fff; font-size: 0.8rem; opacity: 0.5;">[ 待上传微信二维码 ]</span>
             </div>
-            <div class="ip-profile-glow" style="--gc:#c9896a"></div>
-          </div>
-          <div class="ip-profile-info">
-            <div class="ip-profile-header">
-              <div><h3>少 华</h3><span class="ip-profile-en">SHAOHUA</span></div>
-              <div class="ip-status"><span class="status-dot"></span>运营中</div>
-            </div>
-            <div class="ip-track-pills">
-              <span class="track-pill" style="--pc:#c9896a">🛍️ 生活带货</span>
-              <span class="track-pill" style="--pc:#333">🇮🇹 意大利</span>
-            </div>
-            <p class="ip-profile-desc">出镜增加信任感，一键生成AI试穿效果，打破各AI工具壁垒，用极低成本撬动全球顶尖算力，小红书爆火AI服装带货赛道。</p>
-            <div class="ip-stats-row">
-              <div class="ip-stat"><span class="ip-stat-num">163<em>万</em></span><span class="ip-stat-label">总粉丝</span></div>
-              <div class="ip-stat"><span class="ip-stat-num">+1,890</span><span class="ip-stat-label">日增粉丝</span></div>
-              <div class="ip-stat"><span class="ip-stat-num">32<em>条</em></span><span class="ip-stat-label">日均内容</span></div>
-            </div>
-            <div class="ip-platforms">
-              <span class="plt-tag">小红书</span><span class="plt-tag">YouTube</span>
-              <span class="plt-tag">微博</span><span class="plt-tag">Instagram</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="ip-profile-card reveal" id="ip-luqing">
-          <div class="ip-profile-img-wrap">
-            <img src="img/ip-luqing.jpg" alt="卢青" class="ip-profile-img"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="ip-profile-placeholder" style="display:none;--ipc1:#0ea5e9;--ipc2:#6366f1">
-              <span class="ipp-char">卢青</span><span class="ipp-role">国际播客IP</span>
-            </div>
-            <div class="ip-profile-glow" style="--gc:#0ea5e9"></div>
-          </div>
-          <div class="ip-profile-info">
-            <div class="ip-profile-header">
-              <div><h3>卢 青</h3><span class="ip-profile-en">LU QING</span></div>
-              <div class="ip-status"><span class="status-dot"></span>运营中</div>
-            </div>
-            <div class="ip-track-pills">
-              <span class="track-pill" style="--pc:#0ea5e9">🎙️ 国际播客</span>
-              <span class="track-pill" style="--pc:#333">🇦🇺 澳大利亚</span>
-            </div>
-            <p class="ip-profile-desc">靠数字人搭配全球翻译，把流量放大到全球，多语种带货视频，面向海外市场，直接接美金商单。</p>
-            <div class="ip-stats-row">
-              <div class="ip-stat"><span class="ip-stat-num">98<em>万</em></span><span class="ip-stat-label">总粉丝</span></div>
-              <div class="ip-stat"><span class="ip-stat-num">+1,240</span><span class="ip-stat-label">日增粉丝</span></div>
-              <div class="ip-stat"><span class="ip-stat-num">28<em>条</em></span><span class="ip-stat-label">日均内容</span></div>
-            </div>
-            <div class="ip-platforms">
-              <span class="plt-tag">X</span><span class="plt-tag">Instagram</span>
-              <span class="plt-tag">YouTube</span><span class="plt-tag">小红书</span>
+            
+            <p style="color: #fff; font-size: 1.1rem; margin-bottom: 2rem;">微信: <strong>mannibride888</strong></p>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem; justify-content: center; max-width: 200px; margin: 0 auto;">
+              <button onclick="document.getElementById('paymentOverlay').classList.add('active');document.body.style.overflow='hidden'" class="btn-primary" style="padding: 0.8rem 1.5rem; border-radius: 30px; font-size:0.95rem;">进入在线付款</button>
             </div>
           </div>
         </div>
@@ -365,228 +314,8 @@
     </div>
   </section>
 
-  <!-- ══ 合伙人计划 ══ -->
-  <section class="section partner-section" id="partner">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">B端赋能</div>
-        <h2 class="section-title">女化妆师的<br /><span class="gradient-text">超级变现引擎</span></h2>
-        <p class="section-desc">将您的手艺与人脉，转化为7×24小时持续运转的被动收益体系</p>
-      </div>
-      <div class="partner-layout">
-        <div class="partner-benefits">
-          <h3 class="partner-sub">成为曼妮合伙人，您将获得</h3>
-          <div class="benefit-item reveal">
-            <div class="benefit-icon">🔗</div>
-            <div class="benefit-content">
-              <strong>专属推广链接</strong>
-              <p>一键生成专属推广码，客户由您的链接引入所有消费，您持续获得分润</p>
-            </div>
-          </div>
-          <div class="benefit-item reveal">
-            <div class="benefit-icon">📊</div>
-            <div class="benefit-content">
-              <strong>实时收益看板</strong>
-              <p>随时查看您旗下IP带来的流量、收益与分成，清晰透明，每日结算，支持便捷提现</p>
-            </div>
-          </div>
-          <div class="benefit-item reveal">
-            <div class="benefit-icon">🤝</div>
-            <div class="benefit-content">
-              <strong>深度利益绑定</strong>
-              <p>旗下IP每次商业合作、每条带货视频收益，您持续参与分成，手艺变长期复利</p>
-            </div>
-          </div>
-          <div class="benefit-item reveal">
-            <div class="benefit-icon">🛠️</div>
-            <div class="benefit-content">
-              <strong>专属SaaS工具</strong>
-              <p>便捷合伙人后台，一站式为客户提交照片、选择赛道、监控IP成长数据</p>
-            </div>
-          </div>
-        </div>
-        <div class="partner-calculator">
-          <div class="calc-card">
-            <div class="calc-title">💰 收益模拟器</div>
-            <div class="calc-desc">看看您的化妆师人脉能带来多少收益</div>
-            <div class="calc-input-group">
-              <label>您的客户数量：<span id="clientVal">10</span> 位</label>
-              <input type="range" min="1" max="50" value="10" id="clientSlider" class="calc-slider" oninput="updateCalc()" />
-            </div>
-            <div class="calc-input-group">
-              <label>平均套餐级别</label>
-              <div class="calc-sel-group">
-                <button class="calc-sel active" data-price="298" onclick="selectPlan(this,298)">起航版 ¥298</button>
-                <button class="calc-sel" data-price="698" onclick="selectPlan(this,698)">腾飞版 ¥698</button>
-                <button class="calc-sel" data-price="1980" onclick="selectPlan(this,1980)">百万IP ¥1980</button>
-              </div>
-            </div>
-            <div class="calc-result">
-              <div class="calc-result-label">您每月预估收益</div>
-              <div class="calc-result-wrap">
-                <div class="calc-amount" id="calcAmount">¥ 895</div>
-              </div>
-              <div class="calc-note">按30%分润比例计算，随客户IP成长持续增加</div>
-            </div>
-            <button class="btn-partner" id="join-partner-btn" onclick="openPartnerModal()">立即注册成为合伙人</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ══ 全球矩阵 ══ -->
-  <section class="section matrix-section dark-section" id="matrix">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag light">全球矩阵</div>
-        <h2 class="section-title light">一次定制<br /><span class="gradient-text-light">覆盖全球8大平台</span></h2>
-        <p class="section-desc light">曼妮新娘自动为您的IP开通并运营全球主流社交媒体账号矩阵，AI持续产出内容，让影响力无边界扩展</p>
-      </div>
-      <div class="matrix-visual">
-        <div class="matrix-core-wrap">
-          <div class="mc-ring mc-ring-1"></div>
-          <div class="mc-ring mc-ring-2"></div>
-          <div class="mc-ring mc-ring-3"></div>
-          <div class="matrix-core">
-            <div class="mc-icon">🤖</div>
-            <div class="mc-label">曼妮AI引擎</div>
-          </div>
-        </div>
-        <div class="platform-orbit">
-          <div class="p-node" style="--i:0"><div class="p-node-icon">📕</div><div class="p-node-name">小红书</div></div>
-          <div class="p-node" style="--i:1"><div class="p-node-icon">🎵</div><div class="p-node-name">抖音</div></div>
-          <div class="p-node" style="--i:2"><div class="p-node-icon">🌀</div><div class="p-node-name">微博</div></div>
-          <div class="p-node" style="--i:3"><div class="p-node-icon">📷</div><div class="p-node-name">Instagram</div></div>
-          <div class="p-node" style="--i:4"><div class="p-node-icon">𝕏</div><div class="p-node-name">X</div></div>
-          <div class="p-node" style="--i:5"><div class="p-node-icon">▶</div><div class="p-node-name">YouTube</div></div>
-          <div class="p-node" style="--i:6"><div class="p-node-icon">🎯</div><div class="p-node-name">TikTok</div></div>
-          <div class="p-node" style="--i:7"><div class="p-node-icon">📺</div><div class="p-node-name">B站</div></div>
-        </div>
-      </div>
-      <div class="matrix-stats">
-        <div class="mstat"><div class="mstat-num">8</div><div class="mstat-label">全球平台</div></div>
-        <div class="mstat-div"></div>
-        <div class="mstat"><div class="mstat-num">24h</div><div class="mstat-label">全天候运营</div></div>
-        <div class="mstat-div"></div>
-        <div class="mstat"><div class="mstat-num">100+</div><div class="mstat-label">日均内容</div></div>
-        <div class="mstat-div"></div>
-        <div class="mstat"><div class="mstat-num">AI</div><div class="mstat-label">全自动</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ HOW IT WORKS ══ -->
-  <section class="section how-section dark-section" id="how">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag light">极简三步</div>
-        <h2 class="section-title light">照片即入口<br /><span class="gradient-text-light">AI为您定制数字帝国</span></h2>
-      </div>
-      <div class="steps-flow">
-        <div class="step-item reveal" id="step-1">
-          <div class="step-num">01</div>
-          <div class="step-icon-ring">📸</div>
-          <h3>上传您的照片</h3>
-          <p>几张生活照或试妆照即可。AI引擎精准捕捉您的面部特征与独特气质，无需专业拍摄。</p>
-          <div class="step-tip">支持 JPG / PNG · 3~10张最佳</div>
-        </div>
-        <div class="step-connector"><div class="connector-line"></div></div>
-        <div class="step-item reveal" id="step-2">
-          <div class="step-num">02</div>
-          <div class="step-icon-ring">🎭</div>
-          <h3>选择您的赛道</h3>
-          <p>从唱跳偶像、时尚名媛、生活带货、国际播客等多条赛道中，选择最适合您的方向。</p>
-          <div class="step-tip">6大赛道 · 可组合定制</div>
-        </div>
-        <div class="step-connector"><div class="connector-line"></div></div>
-        <div class="step-item reveal" id="step-3">
-          <div class="step-num">03</div>
-          <div class="step-icon-ring">🚀</div>
-          <h3>AI全自动孵化</h3>
-          <p>平台自动生成专属数字分身视频，开通全球8大社媒账号，AI团队7×24小时持续运营。</p>
-          <div class="step-tip">7×24h AI运营 · 全球8大平台</div>
-        </div>
-      </div>
-      <div class="center-cta">
-        <button class="btn-primary-lg" onclick="openUploadModal()">立即开始定制</button>
-      </div>
-    </div>
-  </section>
-
-<!-- Subscription Plans -->
-  <section class="plans section dark-section" id="plans">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag light">订阅套餐</div>
-        <h2 class="section-title light">选择属于您的<br /><span class="gradient-text-light">价值绽放之旅</span></h2>
-        <p class="section-desc light">灵活订阅，按需选择，专业团队全程陪伴您绽放</p>
-      </div>
-      <div class="plans-grid">
-        <div class="plan-card" id="plan-starter">
-          <div class="plan-name">起航版</div>
-          <div class="plan-price">
-            <span class="price-currency">¥</span>
-            <span class="price-num">298</span>
-            <span class="price-period">/月</span>
-          </div>
-          <div class="plan-subtitle">开启您的美丽影响力之旅</div>
-          <ul class="plan-features">
-            <li>✓ IP定位诊断报告</li>
-            <li>✓ 每月30条内容规划</li>
-            <li>✓ 小红书专项运营</li>
-            <li>✓ 每周数据复盘</li>
-            <li>✓ 专属内容顾问</li>
-            <li class="dim">✗ 多平台矩阵运营</li>
-            <li class="dim">✗ 品牌商务对接</li>
-          </ul>
-          <a href="#app" class="plan-btn" id="plan-starter-btn">立即订阅</a>
-        </div>
-        <div class="plan-card featured-plan" id="plan-growth">
-          <div class="plan-badge">最受欢迎</div>
-          <div class="plan-name">腾飞版</div>
-          <div class="plan-price">
-            <span class="price-currency">¥</span>
-            <span class="price-num">698</span>
-            <span class="price-period">/月</span>
-          </div>
-          <div class="plan-subtitle">全速绽放，冲刺百万影响力</div>
-          <ul class="plan-features">
-            <li>✓ 深度IP人设重塑</li>
-            <li>✓ 每月60条内容规划</li>
-            <li>✓ 三平台矩阵运营</li>
-            <li>✓ 每日数据监控</li>
-            <li>✓ 专属运营经理</li>
-            <li>✓ 初级品牌商务对接</li>
-            <li class="dim">✗ 定制化爆款策划</li>
-          </ul>
-          <a href="#app" class="plan-btn featured-btn" id="plan-growth-btn">立即订阅</a>
-        </div>
-        <div class="plan-card premium-plan" id="plan-premium">
-          <div class="plan-badge premium-badge">💎 顶级服务</div>
-          <div class="plan-name">百万IP版</div>
-          <div class="plan-price">
-            <span class="price-currency">¥</span>
-            <span class="price-num">1,980</span>
-            <span class="price-period">/月</span>
-          </div>
-          <div class="plan-subtitle">极致赋能，成就顶级女性IP</div>
-          <ul class="plan-features">
-            <li>✓ 全维度IP战略规划</li>
-            <li>✓ 无限量内容产出</li>
-            <li>✓ 五大平台全矩阵</li>
-            <li>✓ 7×24 专属团队</li>
-            <li>✓ 高端品牌独家合作</li>
-            <li>✓ 定制化爆款策划</li>
-            <li>✓ 线下资源对接</li>
-          </ul>
-          <a href="#app" class="plan-btn premium-btn" id="plan-premium-btn">立即订阅</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- App Download Section -->
+<!-- App Download Section -->
   <section class="app-section section" id="app">
     <div class="container">
       <div class="app-content">

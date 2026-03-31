@@ -2060,3 +2060,37 @@ body {
 
 /* =========================== */
 
+
+/* ========================================= */
+/* ── V1 COMMERCIALIZATION STYLES ── */
+/* ========================================= */
+
+.what-we-do {
+  position: relative;
+  overflow: hidden;
+}
+
+.audience-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary) !important;
+  box-shadow: 0 15px 35px rgba(255,107,157,0.15) !important;
+}
+
+.pv1-card {
+  transition: all 0.3s ease;
+}
+
+.pv1-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary) !important;
+  box-shadow: 0 15px 40px rgba(255,107,157,0.2) !important;
+}
+
+.wf-step:hover h3 {
+  color: var(--primary) !important;
+  transition: color 0.3s ease;
+}
+
+.faq-list > div:last-child {
+  border-bottom: none !important;
+}
