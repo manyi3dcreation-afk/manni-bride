@@ -278,10 +278,10 @@ async function handleStripeWebhook(request, env) {
     const submissionId = session.client_reference_id;
 
     if (submissionId) {
-      // 更新 Supabase
       const supabaseUrl = env.SUPABASE_URL;
       const supabaseKey = env.SUPABASE_SERVICE_KEY;
 
+      // 1. 更新支付状态
       await fetch(`${supabaseUrl}/rest/v1/diagnostic_submissions?id=eq.${submissionId}`, {
         method: 'PATCH',
         headers: {
@@ -297,10 +297,75 @@ async function handleStripeWebhook(request, env) {
           updated_at: new Date().toISOString(),
         }),
       });
+
+      // 2. 查询客户信息用于通知
+      let customerInfo = '';
+      try {
+        const queryRes = await fetch(
+          `${supabaseUrl}/rest/v1/diagnostic_submissions?id=eq.${submissionId}&select=user_name,user_wechat,platform,direction`,
+          {
+            headers: {
+              'apikey': supabaseKey,
+              'Authorization': `Bearer ${supabaseKey}`,
+            },
+          }
+        );
+        if (queryRes.ok) {
+          const [record] = await queryRes.json();
+          if (record) {
+            customerInfo = `\n👤 ${record.user_name}\n💬 微信: ${record.user_wechat}\n📱 平台: ${record.platform || '未填'}\n🎯 方向: ${record.direction || '未填'}`;
+          }
+        }
+      } catch (e) {
+        console.error('Failed to fetch customer info:', e);
+      }
+
+      // 3. 发送 WhatsApp 通知
+      await sendWhatsAppNotification(env, submissionId, customerInfo, session);
     }
   }
 
   return jsonResponse({ received: true }, 200, request, env);
+}
+
+// ═══════════════════════════════════════
+//  WhatsApp 通知 (CallMeBot API)
+// ═══════════════════════════════════════
+
+async function sendWhatsAppNotification(env, submissionId, customerInfo, session) {
+  const phone = env.WHATSAPP_PHONE;    // 你的WhatsApp号码 (含国际区号，如 8613800138000)
+  const apiKey = env.WHATSAPP_APIKEY;  // CallMeBot API Key
+
+  if (!phone || !apiKey) {
+    console.log('WhatsApp notification skipped: WHATSAPP_PHONE or WHATSAPP_APIKEY not set');
+    return;
+  }
+
+  const amount = session.amount_total
+    ? `$${(session.amount_total / 100).toFixed(2)}`
+    : '$29.00';
+
+  const message = `🎉 *新订单已支付!*
+━━━━━━━━━━━━━━
+💰 金额: ${amount}${customerInfo}
+🆔 订单: ${submissionId.slice(0, 8)}...
+⏰ 时间: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}
+━━━━━━━━━━━━━━
+请尽快添加客户微信开始服务 ✨`;
+
+  try {
+    const encodedMsg = encodeURIComponent(message);
+    const url = `https://api.callmebot.com/whatsapp.php?phone=${phone}&text=${encodedMsg}&apikey=${apiKey}`;
+
+    const res = await fetch(url);
+    if (res.ok) {
+      console.log('WhatsApp notification sent successfully');
+    } else {
+      console.error('WhatsApp notification failed:', res.status, await res.text());
+    }
+  } catch (e) {
+    console.error('WhatsApp notification error:', e);
+  }
 }
 
 // ═══════════════════════════════════════
