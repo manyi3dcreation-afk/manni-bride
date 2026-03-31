@@ -2,7 +2,12 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="曼妮新娘" />
+  <meta name="theme-color" content="#080810" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <title>IP定位诊断 | 曼妮新娘</title>
   <meta name="description" content="用几分钟填写基本情况，上传照片与参考图，我们为你生成一份专属的个人IP定位建议。曼妮新娘——助你找到最适合的方向。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -454,6 +459,30 @@
       </div>
     </div>
   </footer>
+
+  <!-- Mobile Bottom Tab Bar -->
+  <nav class="mobile-tab-bar" id="mobileTabBar" style="display:none">
+    <a href="index.html" class="tab-item">
+      <span class="tab-icon">🏠</span>
+      <span>首页</span>
+    </a>
+    <a href="services.html" class="tab-item">
+      <span class="tab-icon">💎</span>
+      <span>服务</span>
+    </a>
+    <a href="diagnostic.html" class="tab-item active">
+      <span class="tab-icon">🔮</span>
+      <span>诊断</span>
+    </a>
+    <a href="faq.html" class="tab-item">
+      <span class="tab-icon">💬</span>
+      <span>问答</span>
+    </a>
+    <a href="javascript:void(0)" class="tab-item" onclick="openInquiryModal()">
+      <span class="tab-icon">✨</span>
+      <span>咨询</span>
+    </a>
+  </nav>
 
   <script src="app.js"></script>
   <script>

@@ -320,8 +320,8 @@ async function handleStripeWebhook(request, env) {
         console.error('Failed to fetch customer info:', e);
       }
 
-      // 3. 发送 WhatsApp 通知
-      await sendWhatsAppNotification(env, submissionId, customerInfo, session);
+      // 3. 发送 Telegram 通知
+      await sendTelegramNotification(env, submissionId, customerInfo, session);
     }
   }
 
@@ -329,15 +329,15 @@ async function handleStripeWebhook(request, env) {
 }
 
 // ═══════════════════════════════════════
-//  WhatsApp 通知 (CallMeBot API)
+//  Telegram 通知
 // ═══════════════════════════════════════
 
-async function sendWhatsAppNotification(env, submissionId, customerInfo, session) {
-  const phone = env.WHATSAPP_PHONE;    // 你的WhatsApp号码 (含国际区号，如 8613800138000)
-  const apiKey = env.WHATSAPP_APIKEY;  // CallMeBot API Key
+async function sendTelegramNotification(env, submissionId, customerInfo, session) {
+  const botToken = env.TELEGRAM_BOT_TOKEN;
+  const chatId = env.TELEGRAM_CHAT_ID;
 
-  if (!phone || !apiKey) {
-    console.log('WhatsApp notification skipped: WHATSAPP_PHONE or WHATSAPP_APIKEY not set');
+  if (!botToken || !chatId) {
+    console.log('Telegram notification skipped: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not set');
     return;
   }
 
@@ -345,26 +345,43 @@ async function sendWhatsAppNotification(env, submissionId, customerInfo, session
     ? `$${(session.amount_total / 100).toFixed(2)}`
     : '$29.00';
 
-  const message = `🎉 *新订单已支付!*
+  const message = `🎉 *新订单已支付\!*
 ━━━━━━━━━━━━━━
-💰 金额: ${amount}${customerInfo}
-🆔 订单: ${submissionId.slice(0, 8)}...
-⏰ 时间: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}
+💰 金额: ${amount}${customerInfo.replace(/[_*[\]()~`>#+=|{}.!-]/g, '\\$&')}
+🆔 订单: \`${submissionId.slice(0, 8)}\`
+⏰ 时间: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' }).replace(/[_*[\]()~`>#+=|{}.!-]/g, '\\$&')}
 ━━━━━━━━━━━━━━
 请尽快添加客户微信开始服务 ✨`;
 
   try {
-    const encodedMsg = encodeURIComponent(message);
-    const url = `https://api.callmebot.com/whatsapp.php?phone=${phone}&text=${encodedMsg}&apikey=${apiKey}`;
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+        parse_mode: 'MarkdownV2',
+      }),
+    });
 
-    const res = await fetch(url);
     if (res.ok) {
-      console.log('WhatsApp notification sent successfully');
+      console.log('Telegram notification sent successfully');
     } else {
-      console.error('WhatsApp notification failed:', res.status, await res.text());
+      // 如果 MarkdownV2 解析失败，用纯文本重试
+      const plainMessage = `🎉 新订单已支付!\n━━━━━━━━━━━━━━\n💰 金额: ${amount}${customerInfo}\n🆔 订单: ${submissionId.slice(0, 8)}\n⏰ 时间: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}\n━━━━━━━━━━━━━━\n请尽快添加客户微信开始服务 ✨`;
+      await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: plainMessage,
+        }),
+      });
+      console.log('Telegram notification sent (plain text fallback)');
     }
   } catch (e) {
-    console.error('WhatsApp notification error:', e);
+    console.error('Telegram notification error:', e);
   }
 }
 

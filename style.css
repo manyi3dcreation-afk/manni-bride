@@ -1184,3 +1184,624 @@ body::after{
 .stat-num{font-size:28px;font-weight:800;color:var(--text)}
 .stat-unit{font-size:14px;font-weight:600;color:var(--rose-lt)}
 .stat-label{display:block;font-size:10px;color:var(--text-3);margin-top:3px;letter-spacing:1px;text-transform:uppercase}
+
+/* ═══════════════════════════════════════════════════════════
+   iPHONE APP-STYLE MOBILE OPTIMIZATION
+   底部导航 · 厚重感 · 原生App风格 · 安全区适配
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── iOS PWA / Standalone Mode ─── */
+@supports(padding: env(safe-area-inset-bottom)) {
+  body{
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+}
+
+/* ─── Mobile App Shell (≤768px) ─── */
+@media(max-width:768px){
+
+  /* ── iOS Rubber-band & Scroll ── */
+  html{
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-y:contain;
+  }
+  body{
+    -webkit-tap-highlight-color:transparent;
+    -webkit-touch-callout:none;
+  }
+
+  /* ── Hide desktop scrollbar on mobile for cleaner app feel ── */
+  ::-webkit-scrollbar{width:0;display:none}
+  body{scrollbar-width:none}
+
+  /* ══════════════════════════════════
+     BOTTOM TAB BAR (iOS App Style)
+     ══════════════════════════════════ */
+  .mobile-tab-bar{
+    display:flex!important;
+    position:fixed;bottom:0;left:0;right:0;z-index:9999;
+    background:rgba(8,8,16,0.94);
+    backdrop-filter:blur(40px) saturate(200%);
+    -webkit-backdrop-filter:blur(40px) saturate(200%);
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding:6px 0 calc(6px + env(safe-area-inset-bottom, 0px));
+    justify-content:space-around;align-items:stretch;
+    box-shadow:0 -4px 30px rgba(0,0,0,0.6),
+               0 -1px 0 rgba(255,255,255,0.04);
+  }
+  .tab-item{
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:3px;
+    flex:1;padding:8px 4px 4px;text-decoration:none;
+    color:var(--text-3);font-size:10px;font-weight:500;
+    letter-spacing:0.3px;transition:all 0.2s ease;
+    -webkit-tap-highlight-color:transparent;
+    position:relative;
+  }
+  .tab-item .tab-icon{
+    font-size:22px;line-height:1;
+    transition:transform 0.2s ease;
+  }
+  .tab-item.active{color:var(--rose-lt)}
+  .tab-item.active .tab-icon{transform:scale(1.1)}
+  .tab-item.active::before{
+    content:'';position:absolute;top:0;left:50%;
+    transform:translateX(-50%);
+    width:20px;height:2px;
+    background:var(--grad-rose);
+    border-radius:0 0 2px 2px;
+  }
+  .tab-item:active{transform:scale(0.92);opacity:0.7}
+
+  /* ── Body padding for bottom tab bar ── */
+  body{
+    padding-bottom:calc(72px + env(safe-area-inset-bottom, 0px))!important;
+  }
+  .footer{
+    padding-bottom:calc(80px + env(safe-area-inset-bottom, 0px))!important;
+  }
+
+  /* ── Hide hamburger + old mobile nav (replaced by tab bar) ── */
+  .hamburger{display:none!important}
+  .nav-links.mobile-open{display:none!important}
+
+  /* ══════════════════════════════════
+     TOP NAVBAR (Slimmer for Mobile)
+     ══════════════════════════════════ */
+  .navbar{
+    padding:10px 0;
+    background:rgba(8,8,16,0.88);
+    backdrop-filter:blur(30px) saturate(180%);
+    -webkit-backdrop-filter:blur(30px) saturate(180%);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .navbar.scrolled{
+    padding:8px 0;
+    background:rgba(6,6,13,0.95);
+    box-shadow:0 2px 20px rgba(0,0,0,0.4);
+  }
+  .nav-container{padding:0 16px}
+  .logo-img{width:32px;height:32px;border-radius:8px}
+  .logo-cn{font-size:17px}
+  .logo-en{font-size:7px;letter-spacing:3px}
+
+  /* ── Move lang/theme to right, compact ── */
+  .lang-toggle{margin-left:auto}
+  .lang-btn{padding:5px 10px;font-size:10px}
+  .theme-switcher{margin-left:6px}
+  .theme-dot{width:14px;height:14px;border-width:1.5px}
+
+  /* ══════════════════════════════════
+     HEAVIER / MORE SUBSTANTIAL FEEL
+     增加厚重感 — 更深的背景、更粗的边框、
+     更强的阴影、更实的卡片质感
+     ══════════════════════════════════ */
+
+  /* ── Stronger card backgrounds ── */
+  .coop-card,
+  .pv1-card,
+  .tier-card,
+  .diag-who-item,
+  .diag-step-card,
+  .path-card,
+  .post-pay,
+  .path-rec,
+  .incubation-block,
+  .faq-item{
+    background:rgba(16,16,30,0.88)!important;
+    border:1.5px solid rgba(255,255,255,0.1)!important;
+    border-radius:20px!important;
+    box-shadow:0 4px 24px rgba(0,0,0,0.4),
+               inset 0 1px 0 rgba(255,255,255,0.04)!important;
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+  }
+
+  /* ── Deeper section backgrounds ── */
+  .dark-section{
+    background:rgba(4,4,12,0.95)!important;
+    border-top:1px solid rgba(255,255,255,0.04);
+    border-bottom:1px solid rgba(255,255,255,0.04);
+  }
+
+  /* ── Thicker buttons on mobile ── */
+  .btn-primary{
+    padding:16px 32px!important;
+    font-size:16px!important;
+    font-weight:700!important;
+    border-radius:16px!important;
+    min-height:52px;
+    box-shadow:0 6px 24px var(--btn-glow),
+               inset 0 1.5px 0 rgba(255,255,255,0.25)!important;
+    letter-spacing:0.5px;
+  }
+  .btn-secondary{
+    padding:16px 32px!important;
+    font-size:16px!important;
+    font-weight:500!important;
+    border-radius:16px!important;
+    min-height:52px;
+    border-width:1.5px!important;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
+
+  /* ── Touch-friendly: all interactive min 44px ── */
+  .chip{
+    padding:12px 20px!important;
+    font-size:14px!important;
+    border-radius:14px!important;
+    min-height:44px;
+    border-width:1.5px!important;
+  }
+  .chip.active{
+    box-shadow:0 0 16px rgba(201,137,106,0.15),
+               inset 0 1px 0 rgba(255,255,255,0.06)!important;
+  }
+
+  /* ── Form inputs thicker ── */
+  .modal-input{
+    padding:16px 18px!important;
+    font-size:16px!important;
+    border-radius:14px!important;
+    min-height:52px;
+    border-width:1.5px!important;
+    background:rgba(16,16,30,0.7)!important;
+  }
+
+  /* ── Upload zone prominent ── */
+  .upload-zone{
+    border-width:2.5px!important;
+    border-radius:20px!important;
+    padding:36px 24px!important;
+    background:rgba(16,16,30,0.5)!important;
+  }
+
+  /* ══════════════════════════════════
+     SECTIONS — More padding, app-like
+     ══════════════════════════════════ */
+  .section{
+    padding:70px 0!important;
+  }
+  .container{
+    padding:0 20px!important;
+  }
+  .section-header{
+    margin-bottom:40px!important;
+  }
+  .section-tag{
+    padding:10px 20px!important;
+    font-size:11px!important;
+    border-radius:14px!important;
+    background:rgba(16,16,30,0.8)!important;
+    border-width:1.5px!important;
+  }
+  .section-title{
+    font-size:clamp(24px,6vw,36px)!important;
+    letter-spacing:0.04em!important;
+  }
+  .section-desc{
+    font-size:15px!important;
+    line-height:1.9!important;
+  }
+
+  /* ══════════════════════════════════
+     HERO — Full-screen, immersive
+     ══════════════════════════════════ */
+  .hero{
+    min-height:100vh!important;
+    min-height:100dvh!important;
+    padding:80px 0 60px!important;
+  }
+  .hero-badge{
+    padding:10px 18px!important;
+    font-size:11px!important;
+    border-radius:14px!important;
+    border-width:1.5px!important;
+    background:rgba(16,16,30,0.7)!important;
+  }
+  .hero-title{
+    font-size:clamp(28px,7vw,42px)!important;
+    letter-spacing:0.06em!important;
+  }
+  .title-line-1{
+    font-size:clamp(16px,4vw,22px)!important;
+  }
+  .title-line-2{
+    font-size:clamp(32px,9vw,48px)!important;
+  }
+  .hero-desc{
+    font-size:15px!important;
+    line-height:2!important;
+  }
+  .hero-actions{
+    gap:14px!important;
+    padding:0 8px;
+  }
+
+  /* ══════════════════════════════════
+     CARDS — Heavier, more substantial
+     ══════════════════════════════════ */
+  .coop-card{
+    padding:28px 22px!important;
+  }
+  .coop-card h3{
+    font-size:clamp(18px,4.5vw,24px)!important;
+    margin-bottom:14px!important;
+  }
+  .coop-card p{
+    font-size:14px!important;
+    line-height:1.9!important;
+  }
+
+  .pv1-card{
+    padding:28px 22px!important;
+    border-radius:20px!important;
+  }
+  .pv1-card h3{
+    font-size:18px!important;
+  }
+  .pv1-card .plan-price{
+    font-size:clamp(24px,5vw,30px)!important;
+    margin-bottom:18px!important;
+  }
+
+  /* Pricing grid: 2-col on mobile */
+  .plans-preview{
+    grid-template-columns:1fr 1fr!important;
+    gap:12px!important;
+  }
+
+  /* ══════════════════════════════════
+     AUDIENCE & WORKFLOW
+     ══════════════════════════════════ */
+  .audience-item{
+    padding:18px 0!important;
+    font-size:15px!important;
+    gap:16px!important;
+  }
+  .audience-check{
+    font-size:20px!important;
+    width:28px;height:28px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(201,137,106,0.1);
+    border-radius:8px;
+  }
+
+  .wf-step{
+    gap:18px!important;
+    margin-bottom:28px!important;
+    padding:16px!important;
+    background:rgba(16,16,30,0.5);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:16px;
+  }
+  .wf-dot{
+    width:24px!important;height:24px!important;
+    border-width:2.5px!important;
+  }
+  .wf-content h3{
+    font-size:clamp(16px,3.5vw,20px)!important;
+  }
+
+  /* ══════════════════════════════════
+     TIER / SERVICE CARDS
+     ══════════════════════════════════ */
+  .tier-card{
+    padding:28px 22px!important;
+    margin-bottom:16px!important;
+  }
+  .tier-card--featured{
+    border-width:2px!important;
+    box-shadow:0 0 32px rgba(255,107,157,0.12),
+               inset 0 1px 0 rgba(255,255,255,0.06)!important;
+  }
+  .tier-badge{
+    font-size:11px!important;
+    padding:6px 16px!important;
+    border-bottom-left-radius:10px!important;
+    border-bottom-right-radius:10px!important;
+  }
+  .tier-header h2{
+    font-size:clamp(18px,4.5vw,24px)!important;
+  }
+  .tier-features ul{
+    line-height:2.2!important;
+    font-size:14px!important;
+  }
+
+  /* ══════════════════════════════════
+     FAQ — Expandable panels look
+     ══════════════════════════════════ */
+  .faq-item{
+    padding:22px 20px!important;
+    margin-bottom:12px!important;
+    border-bottom:none!important;
+  }
+  .faq-question{
+    font-size:16px!important;
+    line-height:1.5!important;
+  }
+  .faq-answer{
+    font-size:14px!important;
+    line-height:1.9!important;
+  }
+
+  /* ══════════════════════════════════
+     DIAGNOSTIC PAGE
+     ══════════════════════════════════ */
+  .diag-hero{
+    padding:100px 0 60px!important;
+  }
+  .diag-hero-title{
+    font-size:clamp(24px,6vw,36px)!important;
+  }
+  .diag-hero-desc{
+    font-size:14px!important;
+    line-height:2!important;
+  }
+  .diag-who-item{
+    padding:20px 18px!important;
+    gap:14px!important;
+  }
+  .diag-who-icon{
+    font-size:26px!important;
+    width:44px;height:44px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(201,137,106,0.08);
+    border-radius:12px;
+  }
+  .diag-step-card{
+    padding:24px 20px!important;
+  }
+  .diag-payment-card{
+    padding:36px 22px!important;
+    border-radius:24px!important;
+    background:rgba(16,16,30,0.9)!important;
+    border:1.5px solid rgba(255,255,255,0.1)!important;
+    box-shadow:0 8px 40px rgba(0,0,0,0.5)!important;
+  }
+  .diag-pay-btn{
+    min-height:56px!important;
+    font-size:17px!important;
+    border-radius:16px!important;
+  }
+  .diag-pay-summary{
+    border-radius:16px!important;
+    padding:20px!important;
+  }
+
+  /* ── Form progress dots ── */
+  .diag-prog-step .prog-num{
+    width:32px!important;height:32px!important;
+    font-size:13px!important;
+    border-width:1.5px!important;
+  }
+  .form-step-header h3{
+    font-size:clamp(18px,4vw,22px)!important;
+  }
+  .form-group label{
+    font-size:15px!important;
+    margin-bottom:12px!important;
+  }
+
+  /* ══════════════════════════════════
+     CHECKOUT PAGE
+     ══════════════════════════════════ */
+  .path-card{
+    padding:22px 20px!important;
+    border-radius:20px!important;
+    border-width:1.5px!important;
+  }
+  .path-card h3{
+    font-size:16px!important;
+  }
+  .post-pay{
+    padding:24px 20px!important;
+    border-radius:20px!important;
+  }
+
+  /* ══════════════════════════════════
+     MODALS (Full-screen on mobile)
+     ══════════════════════════════════ */
+  .modal-overlay{
+    padding:0!important;
+    align-items:flex-end!important;
+  }
+  .modal-box,
+  .payment-modal{
+    width:100%!important;max-width:none!important;
+    border-radius:24px 24px 0 0!important;
+    padding:32px 20px calc(32px + env(safe-area-inset-bottom, 0px))!important;
+    max-height:92vh!important;
+    animation:modalSlideUp 0.4s cubic-bezier(0.32,0.72,0,1)!important;
+    border:none!important;
+    border-top:1px solid rgba(255,255,255,0.1)!important;
+    box-shadow:0 -20px 60px rgba(0,0,0,0.6)!important;
+  }
+  @keyframes modalSlideUp{
+    from{transform:translateY(100%);opacity:0.8}
+    to{transform:translateY(0);opacity:1}
+  }
+  .modal-close{
+    width:36px!important;height:36px!important;
+    font-size:14px!important;
+    top:16px!important;right:16px!important;
+  }
+  /* Modal grab handle */
+  .modal-box::before,
+  .payment-modal::before{
+    content:'';display:block;
+    width:36px;height:4px;
+    background:rgba(255,255,255,0.2);
+    border-radius:2px;margin:0 auto 20px;
+  }
+
+  /* ══════════════════════════════════
+     FLOATING CTA — Adjust for tab bar
+     ══════════════════════════════════ */
+  .wechat-float{
+    bottom:calc(78px + env(safe-area-inset-bottom, 0px))!important;
+    right:16px!important;
+  }
+  .wechat-float-btn{
+    padding:14px 18px!important;
+    border-radius:16px!important;
+    box-shadow:0 8px 32px rgba(201,137,106,0.5)!important;
+  }
+  .wechat-float-label{display:none!important}
+  .wechat-float-icon{font-size:22px!important}
+
+  /* ══════════════════════════════════
+     FOOTER — Compact for mobile
+     ══════════════════════════════════ */
+  .footer{
+    padding:48px 0 24px!important;
+    background:rgba(4,4,10,0.98)!important;
+  }
+  .footer-grid{
+    gap:28px!important;
+  }
+  .footer-brand p{
+    font-size:13px!important;
+  }
+  .social-btn{
+    padding:10px 16px!important;
+    font-size:13px!important;
+    border-radius:12px!important;
+    min-height:44px;
+    display:inline-flex;align-items:center;
+  }
+  .footer-bottom{
+    padding-top:20px!important;
+  }
+
+  /* ══════════════════════════════════
+     ENERGY BARS — Thicker on mobile
+     ══════════════════════════════════ */
+  .energy-bar{
+    height:4px!important;
+    border-radius:3px!important;
+    margin-top:16px!important;
+  }
+  .gold-line{
+    height:2px!important;
+    width:48px!important;
+    opacity:0.6!important;
+  }
+
+  /* ══════════════════════════════════
+     COOPERATION GRID
+     ══════════════════════════════════ */
+  .coop-grid{
+    gap:14px!important;
+  }
+
+  /* ══════════════════════════════════
+     INCUBATION SECTION
+     ══════════════════════════════════ */
+  .incubation-block{
+    padding:24px 20px!important;
+    margin-bottom:14px!important;
+  }
+  .incubation-block--cta{
+    padding:32px 20px!important;
+    border-radius:20px!important;
+  }
+  .incubation-tag{
+    padding:8px 16px!important;
+    font-size:13px!important;
+    border-radius:10px!important;
+  }
+
+  /* ══════════════════════════════════
+     WECHAT QR & CONNECT
+     ══════════════════════════════════ */
+  .wechat-connect h3{
+    font-size:18px!important;
+  }
+  .wechat-qr{
+    width:160px!important;height:160px!important;
+    border-radius:20px!important;
+  }
+
+  /* ──────────────────────────────────
+     GLOBAL MICRO-INTERACTIONS
+     ────────────────────────────────── */
+  /* Haptic-like press feedback */
+  .btn-primary:active,
+  .btn-secondary:active,
+  .chip:active,
+  .social-btn:active,
+  .path-card:active,
+  .pv1-card:active,
+  .coop-card:active,
+  .tier-card:active{
+    transform:scale(0.97)!important;
+    transition:transform 0.1s ease!important;
+  }
+
+  /* Smoother transitions for everything */
+  *{
+    -webkit-transform:translateZ(0);
+    transform:translateZ(0);
+    will-change:auto;
+  }
+}
+
+/* ─── Extra small phones (iPhone SE / mini) ─── */
+@media(max-width:380px){
+  .plans-preview{
+    grid-template-columns:1fr!important;
+  }
+  .hero-title{
+    font-size:clamp(24px,7vw,32px)!important;
+  }
+  .title-line-2{
+    font-size:clamp(28px,8vw,40px)!important;
+  }
+  .container{
+    padding:0 16px!important;
+  }
+  .btn-primary,
+  .btn-secondary{
+    padding:14px 24px!important;
+    font-size:15px!important;
+  }
+  .tab-item .tab-icon{font-size:20px}
+  .tab-item{font-size:9px}
+}
+
+/* ─── Landscape iPhone ─── */
+@media(max-width:768px) and (orientation:landscape){
+  .hero{
+    min-height:auto!important;
+    padding:80px 0 40px!important;
+  }
+  .mobile-tab-bar{
+    padding:4px 0 calc(4px + env(safe-area-inset-bottom, 0px))!important;
+  }
+  .tab-item{padding:6px 4px 2px}
+  .tab-item .tab-icon{font-size:18px}
+  .tab-item{font-size:9px}
+}
