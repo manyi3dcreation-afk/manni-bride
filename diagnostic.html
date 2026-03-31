@@ -333,13 +333,14 @@
           <div class="diag-pay-summary">
             <div class="diag-pay-row">
               <span>IP定位诊断</span>
-              <span class="diag-pay-price">¥199</span>
+              <span class="diag-pay-price">$29 USD</span>
             </div>
             <div class="diag-pay-divider"></div>
             <div class="diag-pay-row total">
               <span>应付金额</span>
-              <span class="diag-pay-total">¥199</span>
+              <span class="diag-pay-total">$29 USD</span>
             </div>
+            <div style="text-align:center;font-size:0.8rem;color:var(--text-3);margin-top:8px;">约 ¥199 人民币（按实时汇率结算）</div>
           </div>
           <button class="btn-primary diag-pay-btn" onclick="handlePayment()" id="payBtn">
             <span>立即支付并开始诊断</span>
@@ -456,13 +457,33 @@
 
   <script src="app.js"></script>
   <script>
-  /* ══ Diagnostic Page Logic ══ */
+  /* ══════════════════════════════════════════════════════════
+     Diagnostic Page Logic — v2 with API Integration
+     Phase 1: 真实图片上传 → Cloudflare Worker + R2
+     Phase 2: 表单提交 → Supabase
+     Phase 3: Stripe Payment Link
+  ══════════════════════════════════════════════════════════ */
   (function() {
+
+    // ═══ 配置 ═══
+    // ⚠️ 部署 Worker 后将此 URL 替换为你的 Worker 地址
+    const API_BASE = 'https://manee-api.manyi3dcreation.workers.dev';
+
+    // ⚠️ 创建 Stripe Payment Link 后替换此 URL
+    const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/YOUR_PAYMENT_LINK_ID';
+
+    // ═══ 表单数据 ═══
     const formData = {
-      age: '', platform: '', goal: [], style: [], direction: '',
+      age: '',
+      platform: '',
+      goal: [],
+      style: [],
+      direction: '',
+      personalPhotos: [],  // [{fileKey, fileUrl, fileName}]
+      refPhotos: [],       // [{fileKey, fileUrl, fileName}]
     };
 
-    /* ─ Chip selection ─ */
+    // ═══ Chip 选择逻辑 ═══
     document.querySelectorAll('.chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const field = chip.dataset.field;
@@ -485,48 +506,111 @@
       });
     });
 
-    /* ─ File upload preview ─ */
-    function setupUpload(inputId, previewId) {
+    // ═══ 文件上传 ═══
+
+    /** 上传单个文件到 Worker API */
+    async function uploadFile(file) {
+      const fd = new FormData();
+      fd.append('file', file);
+
+      const res = await fetch(`${API_BASE}/api/upload`, {
+        method: 'POST',
+        body: fd,
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: '上传失败' }));
+        throw new Error(err.error || '上传失败');
+      }
+
+      return await res.json();
+    }
+
+    /** 设置上传区域 */
+    function setupUpload(inputId, previewId, dataField) {
       const input = document.getElementById(inputId);
       const preview = document.getElementById(previewId);
       const zone = input?.closest('.upload-zone');
 
       if (!input || !preview) return;
 
-      zone?.addEventListener('click', () => input.click());
+      zone?.addEventListener('click', (e) => {
+        if (e.target === input) return; // 避免触发两次
+        input.click();
+      });
+
       zone?.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
       zone?.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
       zone?.addEventListener('drop', e => {
         e.preventDefault();
         zone.classList.remove('drag-over');
-        input.files = e.dataTransfer.files;
-        showPreview(input.files, preview);
+        handleFiles(e.dataTransfer.files, preview, dataField);
       });
 
-      input.addEventListener('change', () => showPreview(input.files, preview));
+      input.addEventListener('change', () => {
+        handleFiles(input.files, preview, dataField);
+      });
     }
 
-    function showPreview(files, container) {
-      container.innerHTML = '';
-      Array.from(files).forEach(file => {
-        if (!file.type.startsWith('image/')) return;
+    /** 处理选中的文件：本地预览 + 上传到服务器 */
+    async function handleFiles(fileList, container, dataField) {
+      const files = Array.from(fileList).filter(f => f.type.startsWith('image/'));
+      if (files.length === 0) return;
+
+      for (const file of files) {
+        // 1) 创建预览 thumb（带 loading 状态）
+        const thumb = document.createElement('div');
+        thumb.className = 'preview-thumb uploading';
+        thumb.innerHTML = `
+          <img src="" alt="preview" />
+          <div class="upload-overlay">
+            <div class="upload-spinner"></div>
+          </div>
+        `;
+        container.appendChild(thumb);
+
+        // 本地预览
         const reader = new FileReader();
         reader.onload = e => {
-          const div = document.createElement('div');
-          div.className = 'preview-thumb';
-          div.innerHTML = `<img src="${e.target.result}" alt="preview" />`;
-          container.appendChild(div);
+          thumb.querySelector('img').src = e.target.result;
         };
         reader.readAsDataURL(file);
-      });
+
+        // 2) 上传到服务器
+        try {
+          const result = await uploadFile(file);
+          // 保存到 formData
+          formData[dataField].push({
+            fileKey: result.fileKey,
+            fileUrl: result.fileUrl,
+            fileName: result.fileName,
+          });
+          // 移除 loading 状态
+          thumb.classList.remove('uploading');
+          thumb.classList.add('uploaded');
+          thumb.querySelector('.upload-overlay').innerHTML = '<span class="upload-done">✓</span>';
+          // 2 秒后隐藏 overlay
+          setTimeout(() => {
+            const overlay = thumb.querySelector('.upload-overlay');
+            if (overlay) overlay.style.display = 'none';
+          }, 1500);
+        } catch (err) {
+          console.error('Upload failed:', err);
+          thumb.classList.remove('uploading');
+          thumb.classList.add('upload-error');
+          thumb.querySelector('.upload-overlay').innerHTML = `
+            <span class="upload-fail">✕</span>
+            <button class="retry-btn" onclick="this.closest('.preview-thumb').remove()">移除</button>
+          `;
+        }
+      }
     }
 
-    setupUpload('personalPhotos', 'personalPreview');
-    setupUpload('refPhotos', 'refPreview');
+    setupUpload('personalPhotos', 'personalPreview', 'personalPhotos');
+    setupUpload('refPhotos', 'refPreview', 'refPhotos');
 
-    /* ─ Step navigation ─ */
+    // ═══ 步骤导航 ═══
     window.nextStep = function(step) {
-      // Validate current step
       if (step === 2) {
         const name = document.getElementById('userName')?.value;
         const wechat = document.getElementById('userWechat')?.value;
@@ -552,37 +636,110 @@
         s.classList.toggle('done', sNum < step);
       });
 
-      // Scroll to form
       document.getElementById('diag-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    /* ─ Go to payment ─ */
-    window.goToPayment = function() {
-      const paySection = document.getElementById('diag-payment');
-      paySection.classList.remove('diag-section-hidden');
-      paySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
-
-    /* ─ Handle payment ─ */
-    window.handlePayment = function() {
-      const btn = document.getElementById('payBtn');
-      btn.innerHTML = '<span class="pay-loading">处理中...</span>';
+    // ═══ 提交表单并跳转支付 ═══
+    window.goToPayment = async function() {
+      const btn = document.querySelector('[onclick="goToPayment()"]');
+      const origText = btn.textContent;
+      btn.textContent = '提交中...';
       btn.disabled = true;
 
-      // Simulate payment processing
-      setTimeout(() => {
-        document.getElementById('diag-payment').classList.add('diag-section-hidden');
+      try {
+        // 收集所有表单数据
+        const submitData = {
+          userName: document.getElementById('userName')?.value || '',
+          userWechat: document.getElementById('userWechat')?.value || '',
+          userJob: document.getElementById('userJob')?.value || '',
+          userAge: formData.age,
+          platform: formData.platform,
+          goals: formData.goal,
+          painPoint: document.getElementById('userPain')?.value || '',
+          styles: formData.style,
+          personalPhotos: formData.personalPhotos,
+          refPhotos: formData.refPhotos,
+          direction: formData.direction,
+          userNote: document.getElementById('userNote')?.value || '',
+        };
+
+        // 调用 API 提交
+        const res = await fetch(`${API_BASE}/api/diagnostic-submit`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submitData),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ error: '提交失败' }));
+          throw new Error(err.error || '提交失败');
+        }
+
+        const result = await res.json();
+        const submissionId = result.submissionId;
+
+        // 保存 submissionId
+        sessionStorage.setItem('manee_submission_id', submissionId);
+
+        // 显示支付区
+        const paySection = document.getElementById('diag-payment');
+        paySection.classList.remove('diag-section-hidden');
+        paySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      } catch (err) {
+        console.error('Submit failed:', err);
+        alert('提交失败：' + err.message + '\n请检查网络后重试');
+        btn.textContent = origText;
+        btn.disabled = false;
+      }
+    };
+
+    // ═══ 处理支付 ═══
+    window.handlePayment = function() {
+      const btn = document.getElementById('payBtn');
+      btn.innerHTML = '<span class="pay-loading">正在跳转支付...</span>';
+      btn.disabled = true;
+
+      const submissionId = sessionStorage.getItem('manee_submission_id');
+
+      if (!submissionId) {
+        alert('提交信息丢失，请重新填写表单');
+        btn.innerHTML = '<span>立即支付并开始诊断</span>';
+        btn.disabled = false;
+        return;
+      }
+
+      // 跳转到 Stripe Payment Link
+      // client_reference_id 用于 Stripe Webhook 回调关联
+      const payUrl = `${STRIPE_PAYMENT_LINK}?client_reference_id=${submissionId}&prefilled_email=`;
+      window.location.href = payUrl;
+    };
+
+    // ═══ 检测支付回调 ═══
+    (function checkPaymentReturn() {
+      const params = new URLSearchParams(window.location.search);
+      const paymentStatus = params.get('payment');
+      const sid = params.get('sid') || sessionStorage.getItem('manee_submission_id');
+
+      if (paymentStatus === 'success' && sid) {
+        // 支付成功，直接显示成功页
+        document.getElementById('diag-payment')?.classList.add('diag-section-hidden');
+        document.getElementById('diag-form').style.display = 'none';
+
         const successSection = document.getElementById('diag-success');
         successSection.classList.remove('diag-section-hidden');
 
-        // Hide form
-        document.getElementById('diag-form').style.display = 'none';
+        // 清除 URL 参数
+        window.history.replaceState({}, '', window.location.pathname);
 
-        successSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 1500);
-    };
+        // 滚动到成功区
+        setTimeout(() => {
+          successSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
+    })();
 
-    /* ─ Copy WeChat ID ─ */
+    // ═══ 复制微信号 ═══
     window.copyWechatId = function() {
       const id = 'mannibride888';
       navigator.clipboard.writeText(id).then(() => {
@@ -594,7 +751,6 @@
           btn.classList.remove('copied');
         }, 2000);
       }).catch(() => {
-        // Fallback
         const ta = document.createElement('textarea');
         ta.value = id;
         document.body.appendChild(ta);
@@ -607,7 +763,7 @@
       });
     };
 
-    /* ─ Confirm added ─ */
+    // ═══ 确认已添加微信 ═══
     window.confirmAdded = function() {
       const card = document.querySelector('.diag-wechat-card');
       card.innerHTML = `
@@ -620,6 +776,39 @@
 
   })();
   </script>
+
+  <!-- 上传状态样式 -->
+  <style>
+    .preview-thumb { position: relative; }
+    .preview-thumb .upload-overlay {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.5);
+      border-radius: 12px;
+      gap: 6px;
+    }
+    .preview-thumb.uploaded .upload-overlay { background: rgba(0,180,80,0.4); }
+    .preview-thumb.upload-error .upload-overlay { background: rgba(220,40,40,0.5); }
+
+    .upload-spinner {
+      width: 24px; height: 24px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .upload-done { color: #fff; font-size: 1.5rem; font-weight: 700; }
+    .upload-fail { color: #ff6b6b; font-size: 1.3rem; font-weight: 700; }
+    .retry-btn {
+      background: rgba(255,255,255,0.2); color: #fff;
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 6px;
+      padding: 3px 10px; font-size: 0.75rem; cursor: pointer;
+    }
+    .retry-btn:hover { background: rgba(255,255,255,0.35); }
+  </style>
 
 </body>
 </html>
